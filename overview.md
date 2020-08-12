@@ -1,6 +1,6 @@
 # 综述
 
-由于[原作者](https://github.com/kkevsekk1/) 不再维护 Auto.js 项目，我计划在原来基础上继续维护者项目，并将原项目命名为AutoX.js。 你现在看的是 原4.1版基础上的项目，后面我将针对项目本身如何开发、运行的进行介绍，欢迎更多开发者参与这个项目维护升级，最新的[AutoX地址](https://github.com/kkevsekk1/AutoX), 文档中很多原项目路径，在原项目没有删除的情况下我并不打算替换掉，以表对于原作者的尊重。这篇文档里有加密相关的内容可能和实际运行情况有冲突，我会逐步完善更新，程序代码，尽可能保持一致。
+由于[原作者](https://github.com/hyb1996/Auto.js) 不再维护 Auto.js 项目，我计划在原来基础上继续维护者项目，并将原项目命名为AutoX.js。 你现在看的是 原4.1版基础上的项目，后面我将针对项目本身如何开发、运行的进行介绍，欢迎更多开发者参与这个项目维护升级，最新的[AutoX地址](https://github.com/kkevsekk1/AutoX), 文档中很多原项目路径，在原项目没有删除的情况下我并不打算替换掉，以表对于原作者的尊重。这篇文档里有加密相关的内容可能和实际运行情况有冲突，我会逐步完善更新，程序代码，尽可能保持一致。
 
 Auto.js使用[JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)作为脚本语言，目前使用[Rhino 1.7.7.2](https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/Rhino)作为脚本引擎，支持ES5与部分ES6特性。
 
