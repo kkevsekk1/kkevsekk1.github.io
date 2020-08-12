@@ -3,3 +3,4 @@ email: kkevsekk@163.com
 markdown: kramdown
 plugins:
   - jekyll-feed  
+theme: jekyll-theme-cayman
