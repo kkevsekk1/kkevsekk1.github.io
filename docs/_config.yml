@@ -1,1 +1,5 @@
-theme: jekyll-theme-cayman
+title: AutoX docs
+email: kkevsekk@163.com 
+markdown: kramdown
+plugins:
+  - jekyll-feed  
