@@ -1,5 +1,5 @@
 {
-  "source": "../api/ui.md",
+  "source": "..\\api\\ui.md",
   "modules": [
     {
       "textRaw": "用户界面: UI",

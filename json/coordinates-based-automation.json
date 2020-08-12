@@ -1,5 +1,5 @@
 {
-  "source": "../api/coordinates-based-automation.md",
+  "source": "..\\api\\coordinates-based-automation.md",
   "modules": [
     {
       "textRaw": "基于坐标的触摸模拟",

@@ -1,5 +1,5 @@
 {
-  "source": "../api/keys.md",
+  "source": "..\\api\\keys.md",
   "modules": [
     {
       "textRaw": "Keys",

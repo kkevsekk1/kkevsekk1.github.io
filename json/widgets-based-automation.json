@@ -1,5 +1,5 @@
 {
-  "source": "../api/widgets-based-automation.md",
+  "source": "..\\api\\widgets-based-automation.md",
   "modules": [
     {
       "textRaw": "基于控件的操作",
