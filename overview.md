@@ -14,8 +14,8 @@ Auto.js使用[JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScrip
 
 # AUTOX 的功能
   * [x] autox 项目工程化：结合webpack vscode插件，开发、编译、打包、部署、混淆、加密一体化 [文档资料](https://github.com/kkevsekk1/webpack-autojs)
-  * [x] vscode 插件右键，自动提示操作者[下载地址](https://marketplace.visualstudio.com/items?itemName=aaroncheng.auto-js-vsce-fixed)
-  * [ ] vscode 自动提示
+  * [x] vscode 插件右键，自动提示操作等[下载地址](https://marketplace.visualstudio.com/items?itemName=aaroncheng.auto-js-vsce-fixed)
+  * [ ] vscode 自动补全、代码提示
   * [ ] 发布新版autoxjs 4.1.0 ： 打包插件，运行apk、autojs开发
   * [ ] 建设论坛、提供交流社区
   * [ ] 建设应用商店 
