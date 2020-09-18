@@ -13,11 +13,11 @@ Auto.js使用[JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScrip
 "自动操作"的部分又可以大致分为基于控件和基于坐标的操作。基于坐标的操作是传统按键精灵、触摸精灵等脚本软件采用的方式，通过屏幕坐标来点击、长按指定位置模拟操作，从而到达目的。例如`click(100, 200)`, `press(100, 200, 500)`等。这种方式在游戏类脚本中比较有可行性，结合找图找色、坐标放缩功能也能达到较好的兼容性。但是，这种方式对一般软件脚本却难以达到想要的效果，而且这种方式需要安卓7.0版本以上或者root权限才能执行。所以对于一般软件脚本(例如批量添加联系人、自动提取短信验证码等等)，我们采用基于控件的模拟操作方式，结合通知事情、按键事情等达成更好的工作流。这些部分的文档参见[基于控件的操作](widgets-based-automation.html)和[基于坐标的操作](coordinates-based-automation.html)。
 
 # AUTOX 的功能
-  * [x] autox 项目工程化：结合webpack vscode插件，开发、编译、打包、部署、混淆、加密一体化 [文档资料](https://github.com/kkevsekk1/webpack-autojs)
+  * [x] autoxjs 项目工程化：结合webpack vscode插件，开发、编译、打包、部署、混淆、加密一体化 [文档资料](https://github.com/kkevsekk1/webpack-autojs)
   * [x] vscode 插件右键，自动提示操作等[下载地址](https://marketplace.visualstudio.com/items?itemName=aaroncheng.auto-js-vsce-fixed)
   * [x] vscode 自动补全、方法注释等， [文档资料](https://github.com/kkevsekk1/webpack-autojs)
   * [x] 发布新版autoxjs 4.2.1 ： 打包插件，运行apk、[autox.js下载地址](https://github.com/kkevsekk1/AutoX/releases)
-  * [ ] 建设论坛、提供交流社区
+  * [x] 建设论坛、提供交流社区，[交流社区](http://112.74.92.123:8090/)
   * [ ] 建设应用商店 
   * [ ] 提供更好的sdk 封装
 
