@@ -172,8 +172,7 @@ console.setPosition(100, 100);
     * `filePattern` {string} 日志写入格式，参见[PatternLayout](http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html)
 
 设置日志保存的路径和配置。例如把日志保存到"/sdcard/1.txt":
-
-```
+``` js
 console.setGlobalLogConfig({
     "file": "/sdcard/1.txt"
 });
@@ -193,7 +192,7 @@ console.setGlobalLogConfig({
 
 设置标题名称，字体颜色，标题栏高度
 
-```
+``` js
   console.setTitle("中文","#ff11ee00",30);
   console.setTitle("中文");
   console.setTitle("中文","#ff11ee00");
@@ -209,7 +208,7 @@ console.setGlobalLogConfig({
 设置标题名称，字体颜色，标题栏高度
 
 
-```
+``` js
   console.setTitle("中文","#ff11ee00",30);
   console.setTitle("中文");
   console.setTitle("中文","#ff11ee00");
@@ -221,7 +220,7 @@ console.setGlobalLogConfig({
 * `size`  {number}  字号大小，单位是dp或sp 20以内比较合适  
 设置log字号大小
 
-```
+``` js
 
 function myrandom(min,max){
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -253,7 +252,7 @@ threads.start(function () {
 控制 console 是否可以输入文字 
 
 
-```
+``` js
         console.setCanInput(false);
 
   
@@ -263,7 +262,8 @@ threads.start(function () {
 **[v4.2.5新增]**
 * `color`  {string} 颜色值 #AARRGGBB
 设置 console 背景色
-```
+
+``` js
         console.setBackgroud("#33ef0000");
 
   
