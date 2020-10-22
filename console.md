@@ -220,7 +220,9 @@ console.setGlobalLogConfig({
 **[v4.2.5新增]**
 * `size`  {number}  字号大小，单位是dp或sp 20以内比较合适  
 设置log字号大小
+
 ```
+
 function myrandom(min,max){
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
@@ -250,12 +252,12 @@ threads.start(function () {
 
 控制 console 是否可以输入文字 
 
+
 ```
         console.setCanInput(false);
 
   
 ```
-
 
 ## console.setBackgroud(color)
 **[v4.2.5新增]**
