@@ -23,7 +23,7 @@ console模块中的一些函数也可以直接作为全局函数使用，例如l
 
 打印到控制台，并带上换行符。 可以传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)](http://man7.org/linux/man-pages/man3/printf.3.html) 中的代替值（参数都会传给 util.format()）。
 
-```
+``` js
 const count = 5;
 console.log('count: %d', count);
 // 打印: count: 5 到 stdout
@@ -65,7 +65,7 @@ console.log('count:', count);
 
 断言。如果value为false则输出错误信息message并停止脚本运行。
 
-```
+``` js
 var a = 1 + 1;
 console.assert(a == 2, "加法出错啦");
 ```
@@ -117,7 +117,7 @@ console.trace('Show me');
 **部分机型可能会有控制台不显示输入框的情况，属于bug。**
 
 例如：
-```
+``` js
 var n = console.input("请输入一个数字:"); 
 //输入123之后：
 toast(n + 1);
@@ -184,20 +184,6 @@ console.setGlobalLogConfig({
 
 相当于`log(text)`。
 
-## console.setTitle(title,color,size)
-**[v4.2.5新增]**
-* `title`  {string} 标题
-* `color`  {string} 颜色值 #AARRGGBB
-* `size`  {number}  标题高度，字号会随高度变化，单位是dp  
-
-设置标题名称，字体颜色，标题栏高度
-
-``` js
-  console.setTitle("中文","#ff11ee00",30);
-  console.setTitle("中文");
-  console.setTitle("中文","#ff11ee00");
-
-```
 
 ## console.setTitle(title,color,size)
 **[v4.2.5新增]**
