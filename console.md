@@ -179,11 +179,96 @@ console.setGlobalLogConfig({
 });
 ```
 
-注意该函数会影响所有脚本的日志记录。
 
 ## print(text)
 * text {string} | {Object} 要打印到控制台的信息
 
 相当于`log(text)`。
+
+## console.setTitle(title,color,size)
+**[v4.2.5新增]**
+* `title`  {string} 标题
+* `color`  {string} 颜色值 #AARRGGBB
+* `size`  {number}  标题高度，字号会随高度变化，单位是dp  
+
+设置标题名称，字体颜色，标题栏高度
+
+```
+  console.setTitle("中文","#ff11ee00",30);
+  console.setTitle("中文");
+  console.setTitle("中文","#ff11ee00");
+
+```
+
+## console.setTitle(title,color,size)
+**[v4.2.5新增]**
+* `title`  {string} 标题
+* `color`  {string} 颜色值 #AARRGGBB
+* `size`  {number}  标题高度，字号会随高度变化，单位是dp  
+
+设置标题名称，字体颜色，标题栏高度
+
+
+```
+  console.setTitle("中文","#ff11ee00",30);
+  console.setTitle("中文");
+  console.setTitle("中文","#ff11ee00");
+  
+```
+
+## console.setLogSize(size)
+**[v4.2.5新增]**
+* `size`  {number}  字号大小，单位是dp或sp 20以内比较合适  
+设置log字号大小
+```
+function myrandom(min,max){
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+threads.start(function () {
+    console.show();
+    console.setTitle("中文","#ff11ee00",30);
+    console.setCanInput(false);
+    var i=0;    
+    do {
+        console.setLogSize(myrandom(4,20) );
+        console.setCanInput(i%2==0);
+        i++;
+        console.log("i----->"+i);
+        sleep(3000);
+    } while (true);
+
+}); 
+
+  
+```
+
+
+## console.setCanInput(can)
+**[v4.2.5新增]**
+* `can`  {boolean}  true 或 false 可以输入或不可以输入
+
+控制 console 是否可以输入文字 
+
+```
+        console.setCanInput(false);
+
+  
+```
+
+
+## console.setBackgroud(color)
+**[v4.2.5新增]**
+* `color`  {string} 颜色值 #AARRGGBB
+设置 console 背景色
+```
+        console.setBackgroud("#33ef0000");
+
+  
+```
+
+
+
+
 
 
