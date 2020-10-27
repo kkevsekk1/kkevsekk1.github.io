@@ -304,3 +304,4 @@ device.vibrate(2000);
 ## device.getVirtualBarHeigh();
 * {number} 返回导航栏的高度
 设备虚拟导航栏的高度,可以用设备高度 减去 这个高度，再按一定比例 点击底部附件的坐标
+
