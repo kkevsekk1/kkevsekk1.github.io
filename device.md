@@ -293,15 +293,17 @@ device.vibrate(2000);
 ```
 
 ## device.cancelVibration()
-
+**[v4.2.7新增]**
 如果设备处于震动状态，则取消震动。
 
 ## device.checkDeviceHasNavigationBar()
+**[v4.2.7新增]**
 * {boolean}  返回 true|false
 设备是否存储虚拟导航栏
 
 
 ## device.getVirtualBarHeigh();
+**[v4.2.7新增]**
 * {number} 返回导航栏的高度
 设备虚拟导航栏的高度,可以用设备高度 减去 这个高度，再按一定比例 点击底部附件的坐标
 
