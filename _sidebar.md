@@ -12,6 +12,7 @@
 * [悬浮窗 - Floaty](/floaty)
 * [文件系统 - Files](/files)
 * [HTTP - Http](/http)
+[Websocket - Websocket](/websocket)
 * [图片与颜色 - Images](/images)
 * [画布 - Canvas](/canvas)
 * [按键模拟 - Keys](/keys)
