@@ -20,6 +20,7 @@ Auto.js使用[JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScrip
   * [x] 建设论坛、提供交流社区，[交流社区](http://www.autoxjs.com/)
   * [ ] 建设应用商店 
   * [ ] 提供更好的sdk 封装
+  * [x] websocket 支持
 
 其他部分主要包括：
 * app: 应用。启动应用，卸载应用，使用应用查看、编辑文件、访问网页，发送应用间广播等。
@@ -30,6 +31,7 @@ Auto.js使用[JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScrip
 * floaty: 悬浮窗。用于显示自定义的悬浮窗。
 * files: 文件系统。文件创建、获取信息、读写。
 * http: HTTP。发送HTTP请求，例如GET, POST等。
+* websocket: websocket 客户端、服务器端，可以进行主动推送消息
 * images, colors: 图片和图色处理。截图，剪切图片，找图找色，读取保存图片等。
 * keys: 按键模拟。比如音量键、Home键模拟等。
 * shell: Shell命令。
