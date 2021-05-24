@@ -66,7 +66,7 @@ events.onKeyDown("menu", function(event){
 events.observeKey();
 //监听音量下键弹起
 events.onKeyDown("volume_down", function(event){
-    toast("音量上键弹起");
+    toast("音量下键弹起");
 });
 //监听Home键弹起
 events.onKeyDown("home", function(event){
