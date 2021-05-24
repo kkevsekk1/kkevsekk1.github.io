@@ -454,7 +454,10 @@ ui.myText.setText("第一行\n第二行\n第三行\n第四行");
 
 输入框控件也是一个特殊的文本控件，因此所有文本控件的函数的属性和函数都适用于按钮控件。输入框控件有自己的属性和函数，要查看所有这些内容，阅读[EditText](http://www.zhdoc.net/android/reference/android/widget/EditText.html)。
 
-对于一个输入框控件，我们可以通过text属性设置他的内容，通过lines属性指定输入框的行数；在代码中通过`getText()`函数获取输入的内容。例如：
+对于一个输入框控件，我们可以通过text属性设置他的内容，通过lines属性指定输入框的行数；在代码中通过`getText()`函数获取输入的内容。` 注意：getText()函数获取输入框的内容时，返回类型是Editable，如果判断是否为空，不能==null，因为不为null，也不能equals（“”），因为类型不一样。如果要获取内容作为字符串，并且使用原生js对字符串的操作函数，需要使用ui.xx.text()的写法来获取内容，如：ui.name.text()`
+
+例如：
+
 ```
 "ui";
 ui.layout(
@@ -467,7 +470,8 @@ ui.layout(
 //指定确定按钮点击时要执行的动作
 ui.ok.click(function(){
     //通过getText()获取输入的内容
-    var name = ui.name.getText();
+    //var name = ui.name.getText();
+    var name = ui.name.text();
     toast(name + "您好!");
 });
 ```
