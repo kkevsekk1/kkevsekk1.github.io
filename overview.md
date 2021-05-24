@@ -41,3 +41,8 @@ Auto.js 使用[JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScri
 - ui: UI 界面。用于显示自定义的 UI 界面，和用户交互。
 
 除此之外，Auto.js 内置了对[Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)。
+
+# 最后
+
+本文档更新 稍有滞后，某些模块文档并没写完，希望有开发者 共同参与维护！不用担心你不懂，我们可以讨论交流! 本文档的开源地址
+(https://github.com/kkevsekk1/AutoXJs-Docs) ,强烈希望有人能 PR！
