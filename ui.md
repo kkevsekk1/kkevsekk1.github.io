@@ -467,7 +467,8 @@ ui.layout(
 //指定确定按钮点击时要执行的动作
 ui.ok.click(function(){
     //通过getText()获取输入的内容
-    var name = ui.name.getText();
+    //var name = ui.name.getText();
+    var name = ui.name.text();
     toast(name + "您好!");
 });
 ```
