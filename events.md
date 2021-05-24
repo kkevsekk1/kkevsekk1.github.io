@@ -242,7 +242,7 @@ log("即将结束运行");
 
 例如：
 ```
-events.obverseNotification();
+events.observeNotification();
 events.onNotification(function(notification){
     log(notification.getText());
 });
