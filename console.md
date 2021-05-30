@@ -264,6 +264,17 @@ threads.start(function () {
   
 ```
 
+## console.setMaxLines(maxLines);
+**[v5.0.2新增]**
+* `maxLines`  {number}  最大行数 如 10 行
+设置 console 显示最大行数，默认-1，不限 
+不限制，显示列表过长，android内存又不足，系统会回收console的引用，即console 将不显示。
+
+``` js
+        console.setMaxLines(500);
+
+  
+```
 
 
 
