@@ -2,21 +2,23 @@
 
 > Stability: 1 - Experiment
 
-threads模块提供了多线程支持，可以启动新线程来运行脚本。
+threads 模块提供了多线程支持，可以启动新线程来运行脚本。
 
 脚本主线程会等待所有子线程执行完成后才停止执行，因此如果子线程中有死循环，请在必要的时候调用`exit()`来直接停止脚本或`threads.shutDownAll()`来停止所有子线程。
 
 通过`threads.start()`启动的所有线程会在脚本被强制停止时自动停止。
 
-由于JavaScript自身没有多线程的支持，因此您可能会遇到意料之外的问题。
+由于 JavaScript 自身没有多线程的支持，因此您可能会遇到意料之外的问题。
 
 ## threads.start(action)
-* `action` {Function} 要在新线程执行的函数
-* 返回 [Thread](#threads_thread)
 
-启动一个新线程并执行action。
+- `action` {Function} 要在新线程执行的函数
+- 返回 [Thread](#thread)
+
+启动一个新线程并执行 action。
 
 例如:
+
 ```
 threads.start(function(){
     //在新线程执行的代码
@@ -29,7 +31,8 @@ while(true){
 }
 ```
 
-通过该函数返回的[Thread](#threads_thread)对象可以获取该线程的状态，控制该线程的运行中。例如:
+通过该函数返回的[Thread](#thread)对象可以获取该线程的状态，控制该线程的运行中。例如:
+
 ```
 var thread = threads.start(function(){
     while(true){
@@ -40,38 +43,42 @@ var thread = threads.start(function(){
 thread.interrupt();
 ```
 
-更多信息参见[Thread](#threads_thread)。
+更多信息参见[Thread](#thread)。
 
 ## threads.shutDownAll()
 
 停止所有通过`threads.start()`启动的子线程。
 
 ## threads.currentThread()
-* 返回 [Thread](#threads_thread)
+
+- 返回 [Thread](#thread)
 
 返回当前线程。
 
 ## threads.disposable()
-* 返回 [Disposable](#threads_disposable)
 
-新建一个Disposable对象，用于等待另一个线程的某个一次性结果。更多信息参见[线程通信](#threads_线程通信)以及[Disposable](#threads_disposable)。
+- 返回 [Disposable](#disposable)
+
+新建一个 Disposable 对象，用于等待另一个线程的某个一次性结果。更多信息参见[线程通信](#线程通信)以及[Disposable](#disposable)。
 
 ## threads.atomic([initialValue])
-* `initialValue` {number} 初始整数值，默认为0
-* 返回[AtomicLong](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html)
 
-新建一个整数原子变量。更多信息参见[线程安全](#threads_线程安全)以及[AtomicLong](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html)。
+- `initialValue` {number} 初始整数值，默认为 0
+- 返回[AtomicLong](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html)
+
+新建一个整数原子变量。更多信息参见[线程安全](#线程安全)以及[AtomicLong](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html)。
 
 ## threads.lock()
-* 返回[ReentrantLock](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html)
 
-新建一个可重入锁。更多信息参见[线程安全](#threads_线程安全)以及[ReentrantLock](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html)。
+- 返回[ReentrantLock](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html)
+
+新建一个可重入锁。更多信息参见[线程安全](#线程安全)以及[ReentrantLock](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html)。
 
 # Thread
 
 线程对象，`threads.start()`返回的对象，用于获取和控制线程的状态，与其他线程交互等。
 
-Thread对象提供了和timers模块一样的API，例如`setTimeout()`, `setInterval()`等，用于在该线程执行相应的定时回调，从而使线程之间可以直接交互。例如：
+Thread 对象提供了和 timers 模块一样的 API，例如`setTimeout()`, `setInterval()`等，用于在该线程执行相应的定时回调，从而使线程之间可以直接交互。例如：
 
 ```
 var thread = threads.start(function(){
@@ -100,11 +107,13 @@ thread.interrupt();
 中断线程运行。
 
 ## Thread.join([timeout])
-* `timeout` {number} 等待时间，单位毫秒
 
-等待线程执行完成。如果timeout为0，则会一直等待直至该线程执行完成；否则最多等待timeout毫秒的时间。
+- `timeout` {number} 等待时间，单位毫秒
+
+等待线程执行完成。如果 timeout 为 0，则会一直等待直至该线程执行完成；否则最多等待 timeout 毫秒的时间。
 
 例如:
+
 ```
 var sum = 0;
 //启动子线程计算1加到10000
@@ -119,7 +128,8 @@ toast("sum = " + sum);
 ```
 
 ## isAlive()
-* 返回 {boolean}
+
+- 返回 {boolean}
 
 返回线程是否存活。如果线程仍未开始或已经结束，返回`false`; 如果线程已经开始或者正在运行中，返回`true`。
 
@@ -164,7 +174,6 @@ thread.setTimeout(function(){
 
 区别在于, 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出`IllegalStateException`。
 
-
 ## Thread.setImmediate(callback[, ...args])
 
 参见[timers.setImmediate()](timers.html#timers_setimmediate_callback_delay_args)。
@@ -194,15 +203,17 @@ thread.setTimeout(function(){
 线程安全问题是一个相对专业的编程问题，本章节只提供给有需要的用户。
 
 引用维基百科的解释：
+
 > 线程安全是编程中的术语，指某个函数、函数库在多线程环境中被调用时，能够正确地处理多个线程之间的共享变量，使程序功能正确完成。
 
-在Auto.js中，线程间变量在符合JavaScript变量作用域规则的前提下是共享的，例如全局变量在所有线程都能访问，并且保证他们在所有线程的可见性。但是，不保证任何操作的原子性。例如经典的自增"i++"将不是原子性操作。
+在 Auto.js 中，线程间变量在符合 JavaScript 变量作用域规则的前提下是共享的，例如全局变量在所有线程都能访问，并且保证他们在所有线程的可见性。但是，不保证任何操作的原子性。例如经典的自增"i++"将不是原子性操作。
 
-Rhino和Auto.js提供了一些简单的设施来解决简单的线程安全问题，如锁`threads.lock()`, 函数同步锁`sync()`, 整数原子变量`threads.atomic()`等。
+Rhino 和 Auto.js 提供了一些简单的设施来解决简单的线程安全问题，如锁`threads.lock()`, 函数同步锁`sync()`, 整数原子变量`threads.atomic()`等。
 
-例如，对于多线程共享下的整数的自增操作(自增操作会导致问题，是因为自增操作实际上为`i = i + 1`，也就是先读取i的值, 把他加1, 再赋值给i, 如果两个线程同时进行自增操作，可能出现i的值只增加了1的情况)，应该使用`threads.atomic()`函数来新建一个整数原子变量，或者使用锁`threads.lock()`来保证操作的原子性，或者用`sync()`来增加同步锁。
+例如，对于多线程共享下的整数的自增操作(自增操作会导致问题，是因为自增操作实际上为`i = i + 1`，也就是先读取 i 的值, 把他加 1, 再赋值给 i, 如果两个线程同时进行自增操作，可能出现 i 的值只增加了 1 的情况)，应该使用`threads.atomic()`函数来新建一个整数原子变量，或者使用锁`threads.lock()`来保证操作的原子性，或者用`sync()`来增加同步锁。
 
 线程不安全的代码如下：
+
 ```
 var i = 0;
 threads.start(function(){
@@ -253,6 +264,7 @@ while(true){
 ```
 
 或者:
+
 ```
 //sync函数会把里面的函数加上同步锁，使得在同一时刻最多只能有一个线程执行这个函数
 var i = 0;
@@ -269,7 +281,8 @@ while(true){
 }
 ```
 
-另外，数组Array不是线程安全的，如果有这种复杂的需求，请用Android和Java相关API来实现。例如`CopyOnWriteList`, `Vector`等都是代替数组的线程安全的类，用于不同的场景。例如:
+另外，数组 Array 不是线程安全的，如果有这种复杂的需求，请用 Android 和 Java 相关 API 来实现。例如`CopyOnWriteList`, `Vector`等都是代替数组的线程安全的类，用于不同的场景。例如:
+
 ```
 var nums = new java.util.Vector();
 nums.add(123);
@@ -277,7 +290,9 @@ nums.add(456);
 toast("长度为" + nums.size());
 toast("第一个元素为" + nums.get(0));
 ```
+
 但很明显的是，这些类不像数组那样简便易用，也不能使用诸如`slice()`之类的方便的函数。在未来可能会加入线程安全的数组来解决这个问题。当然您也可以为每个数组的操作加锁来解决线程安全问题：
+
 ```
 var nums = [];
 var numsLock = threads.lock();
@@ -305,10 +320,11 @@ numsLock.unlock();
 ```
 
 ## sync(func)
-* `func` {Function} 函数
-* 返回 {Function}
 
-给函数func加上同步锁并作为一个新函数返回。
+- `func` {Function} 函数
+- 返回 {Function}
+
+给函数 func 加上同步锁并作为一个新函数返回。
 
 ```
 var i = 0;
@@ -323,9 +339,10 @@ toast(i);
 
 # 线程通信
 
-Auto.js提供了一些简单的设施来支持简单的线程通信。`threads.disposable()`用于一个线程等待另一个线程的(一次性)结果，同时`Lock.newCondition()`提供了Condition对象用于一般的线程通信(await, signal)。另外，`events`模块也可以用于线程通信，通过指定`EventEmiiter`的回调执行的线程来实现。
+Auto.js 提供了一些简单的设施来支持简单的线程通信。`threads.disposable()`用于一个线程等待另一个线程的(一次性)结果，同时`Lock.newCondition()`提供了 Condition 对象用于一般的线程通信(await, signal)。另外，`events`模块也可以用于线程通信，通过指定`EventEmiiter`的回调执行的线程来实现。
 
 使用`threads.disposable()`可以简单地等待和获取某个线程的执行结果。例如要等待某个线程计算"1+.....+10000":
+
 ```
 var sum = threads.disposable();
 //启动子线程计算
@@ -343,6 +360,7 @@ toast("sum = " + sum.blockedGet());
 ```
 
 如果上述代码用`Condition`实现：
+
 ```
 //新建一个锁
 var lock = threads.lock();
@@ -368,6 +386,7 @@ toast("sum = " + sum);
 ```
 
 如果上诉代码用`events`模块实现：
+
 ```
 //新建一个emitter, 并指定回调执行的线程为当前线程
 var sum = events.emitter(threads.currentThread());
@@ -385,4 +404,4 @@ sum.on('result', function(s){
 });
 ```
 
-有关线程的其他问题，例如生产者消费者等问题，请用Java相关方法解决，例如`java.util.concurrent.BlockingQueue`。
+有关线程的其他问题，例如生产者消费者等问题，请用 Java 相关方法解决，例如`java.util.concurrent.BlockingQueue`。
