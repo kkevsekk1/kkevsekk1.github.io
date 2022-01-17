@@ -93,7 +93,7 @@ ui.layout(
 
 如果不设置该属性，则不同的控件和布局有不同的默认宽度，大多数为`auto`。
 
-宽度属性也可以指定一个具体数值。例如`w="20"`，`w="20px"`等。不加单位的情况下默认单位为 dp，其他单位包括 px(像素), mm(毫米), in(英寸)。有关尺寸单位的更多内容，参见[尺寸的单位: Dimension](#ui/尺寸的单位-Dimension)。
+宽度属性也可以指定一个具体数值。例如`w="20"`，`w="20px"`等。不加单位的情况下默认单位为 dp，其他单位包括 px(像素), mm(毫米), in(英寸)。有关尺寸单位的更多内容，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ```
 "ui";
@@ -111,7 +111,7 @@ View 的高度，是属性`height`的缩写形式。可以设置的值为`*`, `a
 
 如果不设置该属性，则不同的控件和布局有不同的默认高度，大多数为`auto`。
 
-宽度属性也可以指定一个具体数值。例如`h="20"`，`h="20px"`等。不加单位的情况下默认单位为 dp，其他单位包括 px(像素), mm(毫米), in(英寸)。有关尺寸单位的更多内容，参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension)。
+宽度属性也可以指定一个具体数值。例如`h="20"`，`h="20px"`等。不加单位的情况下默认单位为 dp，其他单位包括 px(像素), mm(毫米), in(英寸)。有关尺寸单位的更多内容，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ## id
 
@@ -215,7 +215,7 @@ ui.layout(
 
 ![ex2-margin](images/ex2-margin.png)
 
-有关 margin 属性的单位，参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension)。
+有关 margin 属性的单位，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ## marginLeft
 
@@ -308,7 +308,7 @@ View 的最小高度。该值不总是生效的，取决于其父布局是否有
 
 例：`<text height="auto" minHeight="50"/>`
 
-有关该属性的单位，参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension)。
+有关该属性的单位，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ## minWidth
 
@@ -316,7 +316,7 @@ View 的最小宽度。该值不总是生效的，取决于其父布局是否有
 
 例：`<input width="auto" minWidth="50"/>`
 
-有关该属性的单位，参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension)。
+有关该属性的单位，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ## visbility
 
@@ -338,7 +338,7 @@ View 的变换中心坐标 x。用于 View 的旋转、放缩等变换的中心�
 
 该坐标的坐标系以 View 的左上角为原点。也就是 x 值为变换中心到 View 的左边的距离。
 
-有关该属性的单位，参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension)。
+有关该属性的单位，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ## transformPivotY
 
@@ -346,7 +346,7 @@ View 的变换中心坐标 y。用于 View 的旋转、放缩等变换的中心�
 
 该坐标的坐标系以 View 的左上角为原点。也就是 y 值为变换中心到 View 的上边的距离。
 
-有关该属性的单位，参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension)。
+有关该属性的单位，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ## style
 
@@ -652,23 +652,23 @@ ui.layout(
 
 例如，圆角矩形的 Auto.js 图标：`<img w="100" h="100" radius="20" bg="white" src="http://www.autojs.org/assets/uploads/profile/3-profileavatar.png" />`
 
-有关该属性的单位，参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension)。
+有关该属性的单位，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ## radiusTopLeft
 
-图片控件的左上角圆角的半径。有关该属性的单位，参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension)。
+图片控件的左上角圆角的半径。有关该属性的单位，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ## radiusTopRight
 
-图片控件的右上角圆角的半径。有关该属性的单位，参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension)。
+图片控件的右上角圆角的半径。有关该属性的单位，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ## radiusBottomLeft
 
-图片控件的左下角圆角的半径。有关该属性的单位，参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension)。
+图片控件的左下角圆角的半径。有关该属性的单位，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ## radiusBottomRight
 
-图片控件的右下角圆角的半径。有关该属性的单位，参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension)。
+图片控件的右下角圆角的半径。有关该属性的单位，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
 ## borderWidth
 
