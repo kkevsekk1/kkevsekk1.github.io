@@ -7,7 +7,7 @@
 
 ## paddle.ocr(img, cpuThreadNum, useSlim);
 
-识别结果为包含字符串，坐标，置信度等的数组
+识别结果为包含字符串，坐标，置信度等的JSON数组
 
 * img {图片对象} 需要识别的图片
 * cpuThreadNum {number} 识别使用的CPU核心数量，可选参数，默认为4
