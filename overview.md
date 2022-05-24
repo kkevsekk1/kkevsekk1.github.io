@@ -46,7 +46,7 @@ Auto.js 使用[JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScri
 - multimedia：音乐播放及免root视频录制功能
 - games：Web及Android本地游戏编程支持
 - zips: 支持7z、rar、chm、iso等多种格式文件的压缩解压功能。
-- AI: 人工智能相关，预计将包括OCR（文字识别，已实现且较为完善）、TTS（文本转语音）、Speech recognition (语音识别)、NLP (自然语言处理)等多项子功能。
+- AI: 人工智能相关，目前只有OCR（文字识别）功能。
 
 
 
