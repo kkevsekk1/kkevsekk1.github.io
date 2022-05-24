@@ -11,6 +11,7 @@
 * [事件与监听 - Events](/events)
 * [悬浮窗 - Floaty](/floaty)
 * [文件系统 - Files](/files)
+* [压缩解压 - Zips](/zips)
 * [HTTP - Http](/http)
 * [Websocket - Websocket](/websocket)
 * [图片与颜色 - Images](/images)
@@ -25,4 +26,5 @@
 * [多线程 - Threads](/threads)
 * [定时器 - Timers](/timers)
 * [用户界面 - UI](/ui)
+* [人工智能 - AI](/AI)
 * [调用Java - Work with Java](https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/Rhino/Scripting_Java)
