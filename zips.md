@@ -84,6 +84,30 @@ switch (zips.X(filePath, dirPath, password)) {
     default: toastLog("未知错误")
 }
 ```
+## 命令行方式压缩解压
+
+### result = zips.cmdExec(commands)
+* commands {string} 命令行语句
+* result {number} 返回值，P7zip默认的退出代码。
+
+### 示例
+```javascript
+//压缩文件路径(必须是完整路径)
+var filePath = "/sdcard/脚本.7z";
+//目录路径(必须是完整路径)
+var dirPath = "/sdcard/脚本";
+//自定义命令:7z加密压缩
+var password = "password"
+switch (zips.cmdExec("7z a -y -ms -t7z -p" + password + " " + filePath + " -r " + dirPath)) {
+    case 0: toastLog("压缩成功！文件已保存为： " + filePath)
+    case 1: toastLog("压缩结束，存在非致命错误（例如某些文件正在被使用，没有被压缩）")
+    case 2: toastLog("致命错误")
+    case 7: toastLog("命令行错误")
+    case 8: toastLog("没有足够内存")
+    case 255: toastLog("用户中止操作")
+    default: toastLog("未知错误")
+}
+```
 
 ## 7zip命令行使用参考
 
