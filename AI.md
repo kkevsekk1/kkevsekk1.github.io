@@ -24,6 +24,7 @@
 * 手动释放OCR占用的native内存，非必要，供万一出现内存泄露时使用
 
 
+### 示例
 ```javascript
 let img = images.read("./0.jpg")
 let cpuThreadNum = 4
