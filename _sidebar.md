@@ -2,6 +2,7 @@
 * [Q&A](/qa)
 * [如何阅读本文档 - Documentation](/documentation)
 * [应用 - App](/app)
+* [AI - ocr](/AI)
 * [一般全局函数 - Globals](/globals)
 * [控制台 - Console](/console)
 * [基于坐标的操作 - CoordinatesBasedAutomation](/coordinatesBasedAutomation)

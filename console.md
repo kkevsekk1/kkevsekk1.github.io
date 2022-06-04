@@ -215,6 +215,8 @@ console.setGlobalLogConfig({
 * `size`  {number}  字号大小，单位是dp或sp 20以内比较合适  
 设置log字号大小
 
+**需要在显示控制台之后才能设置，否则空指针**
+
 ``` js
 
 function myrandom(min,max){
@@ -257,6 +259,8 @@ threads.start(function () {
 **[v4.2.5新增]**
 * `color`  {string} 颜色值 #AARRGGBB
 设置 console 背景色
+
+**需要在显示控制台之后才能设置，否则空指针**
 
 ``` js
         console.setBackgroud("#33ef0000");
