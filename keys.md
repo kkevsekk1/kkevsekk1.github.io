@@ -46,6 +46,56 @@
 分屏。返回是否执行成功。
 此函数依赖于无障碍服务, 并且需要系统自身功能的支持。
 
+## takeScreenshot()
+* 返回 {boolean}
+* 需要Android 9以上
+
+模拟按键 **电源键+音量下键** 截屏
+不返回截屏得到的图片对象，只返回是否截图成功，图片保存到系统相册
+
+## lockScreen()
+* 返回 {boolean}
+* 需要Android 9以上
+
+模拟按键 **电源键** 锁屏
+
+## dismissNotificationShade()
+* 返回 {boolean}
+* 需要Android 12以上
+
+关闭通知栏的操作
+
+## keyCodeHeadsetHook()
+* 返回 {boolean}
+* 需要Android 12以上
+
+发送KEYCODE_HEADSETHOOK KeyEvent的动作，用于接听/挂断通话和播放/停止媒体
+
+
+## accessibilityShortcut()
+* 返回 {boolean}
+* 需要Android 12以上
+
+触发辅助功能快捷方式的操作。此快捷方式有一个硬件触发器并且可以通过按住两个音量键来激活。
+
+## accessibilityButtonChooser()
+* 返回 {boolean}
+* 需要Android 12以上
+
+调出辅助功能按钮的选择器菜单的操作
+
+## accessibilityButton()
+* 返回 {boolean}
+* 需要Android 12以上
+
+触发辅助功能按钮的操作
+
+## accessibilityAllApps()
+* 返回 {boolean}
+* 需要Android 12以上
+
+显示 Launcher（启动器） 的所有应用的操作。
+
 ## Home()
 模拟按下Home键。
 此函数依赖于root权限。
