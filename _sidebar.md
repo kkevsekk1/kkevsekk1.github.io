@@ -29,8 +29,11 @@
     - [事件与监听 - Events](/events)
     - [Base64](/base64)
     - [消息处理(加密、摘要) - Crypto](/crypto)
+    - [压缩与解压 - Zip](/zips)
     - [多媒体 - Media](/media)
     - [传感器 - Sensor](/sensors)
+    - [协程](/continuation)
+    - [WebView 与 HTML](/webViewAndHtml)
     - [执行命令 - Shell](/shell)
     - [调用 Java](/workWithJava)
 
