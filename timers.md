@@ -2,9 +2,11 @@
 
 > 稳定性: 稳定
 
-timers 模块暴露了一个全局的 API，用于在某个未来时间段调用调度函数。 因为定时器函数是全局的，所以使用该 API 无需调用 timers.***
+timers 模块暴露了一个全局的 API，用于在某个未来时间段调用调度函数。 
 
-Auto.js 中的计时器函数实现了与 Web 浏览器提供的定时器类似的 API，除了它使用了一个不同的内部实现，它是基于 Android Looper-Handler消息循环机制构建的。其实现机制与Node.js比较相似。
+因为定时器函数是全局的，所以使用该 API 无需调用 timers.XXXXX
+
+Auto.js 中的计时器函数实现了与 Web 浏览器提供的定时器类似的 API，除了它使用了一个不同的内部实现，它是基于 `Android Looper-Handler` 消息循环机制构建的。其实现机制与 Node.js 比较相似。
 
 例如，要在5秒后发出消息"hello":
 ```js

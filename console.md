@@ -204,9 +204,9 @@ console.setGlobalLogConfig({
 
 
 ``` js
-  console.setTitle("中文","#ff11ee00",30);
-  console.setTitle("中文");
-  console.setTitle("中文","#ff11ee00");
+console.setTitle("中文","#ff11ee00",30);
+console.setTitle("中文");
+console.setTitle("中文","#ff11ee00");
   
 ```
 
@@ -250,7 +250,7 @@ threads.start(function () {
 
 
 ``` js
-        console.setCanInput(false);
+console.setCanInput(false);
 
 ```
 
@@ -262,7 +262,7 @@ threads.start(function () {
 **需要在显示控制台之后才能设置，否则空指针**
 
 ``` js
-        console.setBackgroud("#33ef0000");
+console.setBackgroud("#33ef0000");
 
 ```
 
@@ -273,8 +273,7 @@ threads.start(function () {
 不限制，显示列表过长，android内存又不足，系统会回收console的引用，即console 将不显示。
 
 ``` js
-        console.setMaxLines(500);
-
+console.setMaxLines(500);
   
 ```
 

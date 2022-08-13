@@ -2,13 +2,13 @@
 
 <!-- type=misc -->
 
-本文档为Auto.js的文档，解释了Auto.js各个模块的API的使用方法、作用和例子。
+文档使用 Markdown 编写，使用 [Docsify](https://github.com/docsifyjs/docsify/) 解析为网页，[源码](https://github.com/hyb1996/AutoJs-Docs) 在 github 上开源，目前由开发者维护。
 
-文档借助Node.js的文档构建工具生成，并在github上开源(https://github.com/hyb1996/AutoJs-Docs )，目前由开发者维护。
+## API 稳定性
 
-## API稳定性
+由于 AutoX.js 处于活跃的更新和开发状态，API 可能随时有变动，我们用 `稳定性` 来标记模块、函数的稳定性。
 
-由于Auto.js处于活跃的更新和开发状态，API可能随时有变动，我们用Stability来标记模块、函数的稳定性。这些标记包括：
+这些标记包括：
 
 ```
 稳定性: 弃用
@@ -33,7 +33,7 @@
 
 ## 如何阅读本文档
 
-先看一个例子，下面是[基于控件的操作模拟](coordinates-based-automation.html)的章节中input函数的部分说明。
+先看一个例子，下面是 [基于控件的操作](/widgetsBasedAutomation) 的章节中 input 函数的部分说明。
 
 ## input([i, ]text)
 * `i` {number} 表示要输入的为第i + 1个输入框

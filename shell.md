@@ -1,8 +1,10 @@
-shell即Unix Shell，在类Unix系统提供与操作系统交互的一系列命令。
+shell 即 Unix Shell，在类 Unix 系统提供与操作系统交互的一系列命令。
 
-很多程序可以用来执行shell命令，例如终端模拟器。
+很多程序可以用来执行 shell 命令，例如终端模拟器。
 
-在Auto.js大致等同于用adb执行命令"adb shell"。其实现包括两种方式：
+在 Auto.js 大致等同于用 adb 执行命令 "adb shell"。
+
+其实现包括两种方式：
 
 * 通过`java.lang.Runtime.exec`执行(shell, Tap, Home等函数)
 * 通过内嵌终端模拟器执行(RootAutomator, Shell等对象)
@@ -20,12 +22,14 @@ shell即Unix Shell，在类Unix系统提供与操作系统交互的一系列命�
 * result {string} 运行结果(stdout输出结果)
 * error {string} 运行的错误信息(stderr输出结果)。例如执行需要root权限的命令但没有授予root权限会返回错误信息"Permission denied"。
     
-示例(强制停止微信) ： 
-```
+
+示例（强制停止微信）： 
 ```js
 var result = shell("am force-stop com.tencent.mm", true);
 log(result);
+
 console.show();
+
 if(result.code == 0){
   toast("执行成功");
 }else{
