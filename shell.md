@@ -22,6 +22,7 @@ shell即Unix Shell，在类Unix系统提供与操作系统交互的一系列命�
     
 示例(强制停止微信) ： 
 ```
+```js
 var result = shell("am force-stop com.tencent.mm", true);
 log(result);
 console.show();
@@ -42,7 +43,7 @@ shell函数通过用来一次性执行单条命令并获取结果。如果有多
 * root {Boolean} 是否以root权限运行一个shell进程，默认为false。这将会影响其后使用该Shell对象执行的命令的权限
 
 Shell对象的"构造函数"。
-```
+```js
 var sh = new Shell(true);
 //强制停止微信
 sh.exec("am force-stop com.tencent.mm");
@@ -76,7 +77,7 @@ sh.exit();
 * onNewLine {Function} 每当shell有新的一行输出时便会调用该函数。其参数是一个字符串(不包括最后的换行符)。
 
 例如:
-```
+```js
 var sh = new Shell();
 sh.setCallback({
 	onNewLine: function(line){

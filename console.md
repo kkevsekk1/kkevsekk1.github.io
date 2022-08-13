@@ -154,7 +154,7 @@ toast(n + 1);
 * `h` {number} 高度
 
 设置控制台的大小，单位像素。
-```
+```js
 console.show();
 //设置控制台大小为屏幕的四分之一
 console.setSize(device.width / 2, device.height / 2);
@@ -252,7 +252,6 @@ threads.start(function () {
 ``` js
         console.setCanInput(false);
 
-  
 ```
 
 ## console.setBackgroud(color)
@@ -265,7 +264,6 @@ threads.start(function () {
 ``` js
         console.setBackgroud("#33ef0000");
 
-  
 ```
 
 ## console.setMaxLines(maxLines);

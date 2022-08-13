@@ -8,7 +8,7 @@ sensors 模块提供了获取手机上的传感器的信息的支持，这些传
 
 例如，监听光线传感器的代码为：
 
-```
+```js
 //光线传感器监听
 sensors.register("light").on("change", (event, light)=>{
     log("当前光强度为", light);
@@ -100,7 +100,7 @@ sensors.register("light").on("change", (event, light)=>{
 
 例如:
 
-```
+```js
 console.show();
 //注册传感器监听
 var sensor = sensors.register("gravity");
@@ -116,7 +116,7 @@ sensor.on("change", (gx, gy, gz)=>{
 
 可以通过 delay 参数来指定传感器数据的更新频率，例如：
 
-```
+```js
 var sensor = sensors.register("gravity", sensors.delay.game);
 ```
 
@@ -124,7 +124,7 @@ var sensor = sensors.register("gravity", sensors.delay.game);
 
 例如:
 
-```
+```js
 sensors.ignoresUnsupportedSensor = true;
 //无需null判断
 sensors.register("gravity").on("change", (gx, gy, gz)=>{
@@ -140,7 +140,7 @@ sensors.register("gravity").on("change", (gx, gy, gz)=>{
 
 注销该传感器监听器。被注销的监听器将不再能监听传感器数据。
 
-```
+```js
 //注册一个传感器监听器
 var sensor = sensors.register("gravity");
 if(sensor == null){
@@ -162,7 +162,7 @@ setTimeout(()=> {
 
 表示是否忽略不支持的传感器。如果该值被设置为`true`，则函数`sensors.register()`即使对不支持的传感器也会返回一个无任何数据的虚拟传感器监听，也就是`sensors.register()`不会返回`null`从而避免非空判断，并且此时会触发`sensors`的"unsupported_sensor"事件。
 
-```
+```js
 //忽略不支持的传感器
 sensors.ignoresUnsupportedSensor = true;
 //监听有不支持的传感器时的事件
@@ -193,7 +193,7 @@ log(sensors.register("aaabbb"));
 
 一个监听光线传感器和加速度传感器并且每 0.5 秒获取一个数据并最终写入一个 csv 表格文件的例子如下：
 
-```
+```js
 //csv文件路径
 cosnt csvPath = "/sdcard/data.csv";
 //记录光线传感器的数据

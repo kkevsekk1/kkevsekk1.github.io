@@ -8,7 +8,7 @@ events 本身是一个[EventEmiiter](#eventemitter), 但内置了一些事件、
 
 需要注意的是，事件的处理是单线程的，并且仍然在原线程执行，如果脚本主体或者其他事件处理中有耗时操作、轮询等，则事件将无法得到及时处理（会进入事件队列等待脚本主体或其他事件处理完成才执行）。例如:
 
-```
+```js
 auto();
 events.observeNotification();
 events.on('toast', function(t){
@@ -41,7 +41,7 @@ while(true){
 
 例如:
 
-```
+```js
 //启用按键监听
 events.observeKey();
 //监听音量上键按下
@@ -66,7 +66,7 @@ events.onKeyDown("menu", function(event){
 
 例如:
 
-```
+```js
 //启用按键监听
 events.observeKey();
 //监听音量下键弹起
@@ -123,7 +123,7 @@ events.onKeyDown("home", function(event){
 
 该函数通常于按键监听结合，例如想监听音量键并使音量键按下时不弹出音量调节框则为：
 
-```
+```js
 events.setKeyInterceptionEnabled("volume_up", true);
 events.observeKey();
 events.onKeyDown("volume_up", ()=>{
@@ -163,7 +163,7 @@ events.onKeyDown("volume_up", ()=>{
 
 例如:
 
-```
+```js
 //启用触摸监听
 events.observeTouch();
 //注册触摸监听器
@@ -185,7 +185,7 @@ events.onTouch(function(p){
 当有按键被按下或弹起时会触发该事件。
 例如：
 
-```
+```js
 auto();
 events.observeKey();
 events.on("key", function(keyCode, event){
@@ -203,7 +203,7 @@ events.on("key", function(keyCode, event){
 
 例如：
 
-```
+```js
 auto();
 events.observeKey();
 events.on("key", function(keyCode, event){
@@ -220,7 +220,7 @@ events.on("key", function(keyCode, event){
 
 当有按键被按下时会触发该事件。
 
-```
+```js
 auto();
 events.observeKey();
 events.on("key_down", function(keyCode, event){
@@ -235,7 +235,7 @@ events.on("key_down", function(keyCode, event){
 
 当有按键弹起时会触发该事件。
 
-```
+```js
 auto();
 events.observeKey();
 events.on("key_up", function(keyCode, event){
@@ -250,7 +250,7 @@ events.on("key_up", function(keyCode, event){
 一个脚本停止运行时，会关闭该脚本的所有悬浮窗，触发 exit 事件，之后再回收资源。如果 exit 事件的处理中有死循环，则后续资源无法得到及时回收。
 此时脚本会停留在任务列表，如果在任务列表中关闭，则会强制结束 exit 事件的处理并回收后续资源。
 
-```
+```js
 log("开始运行")
 events.on("exit", function(){
     log("结束运行");
@@ -266,7 +266,7 @@ log("即将结束运行");
 
 例如：
 
-```
+```js
 events.observeNotification();
 events.onNotification(function(notification){
     log(notification.getText());
@@ -289,7 +289,7 @@ Toast 监听依赖于无障碍服务，因此此函数会确保无障碍服务�
 
 例如，要记录发出所有 toast 的应用：
 
-```
+```js
 events.observeToast();
 events.onToast(function(toast){
     log("Toast内容: " + toast.getText() + " 包名: " + toast.getPackageName());
@@ -304,7 +304,7 @@ events.onToast(function(toast){
 
 例如：
 
-```
+```js
 events.observeNotification();
 events.on("notification", function(n){
     log("收到新通知:\n 标题: %s, 内容: %s, \n包名: %s", n.getTitle(), n.getText(), n.getPackageName());
@@ -327,7 +327,7 @@ events.on("notification", function(n){
 
 通知发出时间的时间戳，可以用于构造`Date`对象。例如：
 
-```
+```js
 events.observeNotification();
 events.on("notification", function(n){
     log("通知时间为}" + new Date(n.when));
@@ -419,7 +419,7 @@ events.on("notification", function(n){
 
 注意，与 Node.js 不同，**这是一个硬性限制**。 EventEmitter 实例不允许添加更多的监听器，监听器超过最大数量时会抛出 TooManyListenersException。
 
-```
+```js
 emitter.setMaxListeners(emitter.getMaxListeners() + 1);
 emitter.once('event', () => {
   // 做些操作
@@ -447,7 +447,7 @@ emitter.on(eventName, listener) 的别名。
 
 返回一个列出触发器已注册监听器的事件的数组。 数组中的值为字符串或符号。
 
-```
+```js
 const myEE = events.emitter();
 myEE.on('foo', () => {});
 myEE.on('bar', () => {});
@@ -475,7 +475,7 @@ console.log(myEE.eventNames());
 
 返回名为 eventName 的事件的监听器数组的副本。
 
-```
+```js
 server.on('connection', (stream) => {
   console.log('someone connected!');
 });
@@ -490,7 +490,7 @@ console.log(util.inspect(server.listeners('connection')));
 
 添加 listener 函数到名为 eventName 的事件的监听器数组的末尾。 不会检查 listener 是否已被添加。 多次调用并传入相同的 eventName 和 listener 会导致 listener 被添加与调用多次。
 
-```
+```js
 server.on('connection', (stream) => {
   console.log('有连接！');
 });
@@ -500,7 +500,7 @@ server.on('connection', (stream) => {
 
 默认情况下，事件监听器会按照添加的顺序依次调用。 emitter.prependListener() 方法可用于将事件监听器添加到监听器数组的开头。
 
-```
+```js
 const myEE = events.emitter();
 myEE.on('foo', () => console.log('a'));
 myEE.prependListener('foo', () => console.log('b'));
@@ -517,7 +517,7 @@ myEE.emit('foo');
 
 添加一个单次 listener 函数到名为 eventName 的事件。 下次触发 eventName 事件时，监听器会被移除，然后调用。
 
-```
+```js
 server.once('connection', (stream) => {
   console.log('首次调用！');
 });
@@ -527,7 +527,7 @@ server.once('connection', (stream) => {
 
 默认情况下，事件监听器会按照添加的顺序依次调用。 emitter.prependOnceListener() 方法可用于将事件监听器添加到监听器数组的开头。
 
-```
+```js
 const myEE = events.emitter();
 myEE.once('foo', () => console.log('a'));
 myEE.prependOnceListener('foo', () => console.log('b'));
@@ -544,7 +544,7 @@ myEE.emit('foo');
 
 添加 listener 函数到名为 eventName 的事件的监听器数组的开头。 不会检查 listener 是否已被添加。 多次调用并传入相同的 eventName 和 listener 会导致 listener 被添加与调用多次。
 
-```
+```js
 server.prependListener('connection', (stream) => {
   console.log('有连接！');
 });
@@ -559,7 +559,7 @@ server.prependListener('connection', (stream) => {
 
 添加一个单次 listener 函数到名为 eventName 的事件的监听器数组的开头。 下次触发 eventName 事件时，监听器会被移除，然后调用。
 
-```
+```js
 server.prependOnceListener('connection', (stream) => {
   console.log('首次调用！');
 });
@@ -584,7 +584,7 @@ server.prependOnceListener('connection', (stream) => {
 
 从名为 eventName 的事件的监听器数组中移除指定的 listener。
 
-```
+```js
 const callback = (stream) => {
   console.log('有连接！');
 };
@@ -597,7 +597,7 @@ removeListener 最多只会从监听器数组里移除一个监听器实例。 �
 
 注意，一旦一个事件被触发，所有绑定到它的监听器都会按顺序依次触发。 这意味着，在事件触发后、最后一个监听器完成执行前，任何 removeListener() 或 removeAllListeners() 调用都不会从 emit() 中移除它们。 随后的事件会像预期的那样发生。
 
-```
+```js
 const myEmitter = events.emitter();
 
 const callbackA = () => {
@@ -647,13 +647,13 @@ events.broadcast 本身是一个 EventEmitter，但它的事件是在脚本间�
 
 例如在一个脚本发送一个广播 hello:
 
-```
+```js
 events.broadcast.emit("hello", "小明");
 ```
 
 在其他脚本中监听并处理：
 
-```
+```js
 events.broadcast.on("hello", function(name){
     toast("你好, " + name);
 });

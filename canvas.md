@@ -4,12 +4,12 @@ canvas提供了使用画布进行2D画图的支持，可用于简单的小游戏
 
 canvas的坐标系为平面直角坐标系，以屏幕左上角为原点，屏幕上边为x轴正方向，屏幕左边为y轴正方向。例如分辨率为1920*1080的屏幕上，画一条从屏幕左上角到屏幕右下角的线段为:
 
-```
+```js
 canvas.drawLine(0, 0, 1080, 1920, paint);
 ```
 
 canvas的绘制依赖于画笔Paint, 通过设置画笔的粗细、颜色、填充等可以改变绘制出来的图形。例如绘制一个红色实心正方形为：
-```
+```js
 var paint = new Paint();
 //设置画笔为填充，则绘制出来的图形都是实心的
 paint.setStyle(Paint.STYLE.FILL);
@@ -20,7 +20,7 @@ canvas.drawRect(0, 0, 100, 100, paint);
 ```
 
 如果要绘制正方形的边框，则通过设置画笔的Style来实现：
-```
+```js
 var paint = new Paint();
 //设置画笔为描边，则绘制出来的图形都是轮廓
 paint.setStyle(Paint.STYLE.STROKE);
