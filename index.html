@@ -67,32 +67,7 @@
           namespace: "website-1",
         },
         sidebarDisplayLevel: 1,
-
-        plugins: [
-          function (hook, vm) {
-            hook.beforeEach(function (content) {
-
-              // content为md文件本身的内容
-
-              const url =
-                "https://github.com/kkevsekk1/kkevsekk1.github.io/edit/main/" +
-                vm.route.file;
-            
-              const editHtml = `<p style="text-align:right"> :memo: <a target="_blank" href="${url}">在 github 编辑此页</a> </p>`;
-
-              return content + editHtml;
-            });
-            hook.afterEach(function (html) {
-              // 页脚
-              const footer = [
-                "<footer style='text-align: center;'>",
-                'Powered by <a target="_blank" href="https://github.com/docsifyjs/docsify">Docsify</a> on GitHub Pages',
-                "</footer>",
-              ].join("");
-              return html + footer;
-            });
-          },
-        ],
+       
       };
     </script>
 
