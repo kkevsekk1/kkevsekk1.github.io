@@ -46,7 +46,7 @@ auto();
 
 # SimpleActionAutomator
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 SimpleActionAutomator 提供了一些模拟简单操作的函数，例如点击文字、模拟按键等。这些函数可以直接作为全局函数使用。
 

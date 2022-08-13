@@ -1,6 +1,6 @@
 # Timers
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 timers 模块暴露了一个全局的 API，用于在某个未来时间段调用调度函数。 因为定时器函数是全局的，所以使用该 API 无需调用 timers.***
 

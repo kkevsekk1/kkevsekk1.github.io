@@ -1,6 +1,6 @@
 # Events
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 events 模块提供了监听手机通知、按键、触摸的接口。您可以用他配合自动操作函数完成自动化工作。
 
@@ -362,7 +362,7 @@ events.on("notification", function(n){
 
 # KeyEvent
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 ## KeyEvent.getAction()
 
@@ -397,7 +397,7 @@ events.on("notification", function(n){
 
 # keys
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 按键事件中所有可用的按键名称为：
 
@@ -409,7 +409,7 @@ events.on("notification", function(n){
 
 # EventEmitter
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 ## EventEmitter.defaultMaxListeners
 

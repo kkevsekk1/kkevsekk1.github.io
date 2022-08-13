@@ -1,6 +1,6 @@
 # HTTP
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 http模块提供一些进行http请求的函数。
 

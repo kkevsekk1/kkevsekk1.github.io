@@ -9,7 +9,7 @@ shell即Unix Shell，在类Unix系统提供与操作系统交互的一系列命�
 
 # shell函数
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 ## shell(cmd[, root])
 * cmd {string} 要执行的命令
@@ -35,7 +35,7 @@ if(result.code == 0){
 
 # Shell
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 shell函数通过用来一次性执行单条命令并获取结果。如果有多条命令需要执行，用Shell对象的效率更高。这是因为，每次运行shell函数都会打开一个单独的shell进程并在运行结束后关闭他，这个过程需要一定的时间；而Shell对象自始至终使用同一个shell进程。
 

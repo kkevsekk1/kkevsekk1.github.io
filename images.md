@@ -1,6 +1,6 @@
 # colors
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 在Auto.js有两种方式表示一个颜色。
 
@@ -138,7 +138,7 @@ log(colors.equals(0xFF112233, 0xFF223344));
 
 # Images
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 images模块提供了一些手机设备中常见的图片处理函数，包括截图、读写图片、图片剪裁、旋转、二值化、找色找图等。
 

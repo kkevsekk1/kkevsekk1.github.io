@@ -1,6 +1,6 @@
 # Threads
 
-> Stability: 1 - Experiment
+> 稳定性: 实验
 
 threads 模块提供了多线程支持，可以启动新线程来运行脚本。
 
