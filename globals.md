@@ -13,7 +13,7 @@
 
 暂停运行n**毫秒**的时间。1秒等于1000毫秒。
 
-```
+```js
 //暂停5毫秒
 sleep(5000);
 ```
@@ -37,7 +37,7 @@ sleep(5000);
 
 设置剪贴板内容。此剪贴板即系统剪贴板，在一般应用的输入框中"粘贴"既可使用。
 
-```
+```js
 setClip("剪贴板文本");
 ```
 
@@ -46,7 +46,7 @@ setClip("剪贴板文本");
 
 返回系统剪贴板的内容。
 
-```
+```js
 toast("剪贴板内容为:" + getClip());
 ```
 
@@ -57,21 +57,21 @@ toast("剪贴板内容为:" + getClip());
 
 注意，信息的显示是"异步"执行的，并且，不会等待信息消失程序才继续执行。如果在循环中执行该命令，可能出现脚本停止运行后仍然有不断的气泡信息出现的情况。
 例如:
-```
+```js
 for(var i = 0; i < 100; i++){
   toast(i);
 }
 ```
 运行这段程序以后，会很快执行完成，且不断弹出消息，在任务管理中关闭所有脚本也无法停止。
 要保证气泡消息才继续执行可以用：
-```
+```js
 for(var i = 0; i < 100; i++){
   toast(i);
   sleep(2000);
 }
 ```
 或者修改toast函数：
-```
+```js
 var _toast_ = toast;
 toast = function(message){
   _toast_(message);
@@ -157,7 +157,7 @@ version参数可以是整数表示版本号，例如`requiresAutojsVersion(250)`
 * `permissions` {Array} 权限的字符串数组
 
 动态申请安卓的权限。例如：
-```
+```js
 //请求GPS权限
 runtime.requestPermissions(["access_fine_location"]);
 ```
@@ -174,7 +174,7 @@ runtime.requestPermissions(["access_fine_location"]);
 * `path` {string} jar文件路径
 
 加载目标jar文件，加载成功后将可以使用该Jar文件的类。
-```
+```js
 // 加载jsoup.jar
 runtime.loadJar("./jsoup.jar");
 // 使用jsoup解析html

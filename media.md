@@ -1,11 +1,11 @@
 # Media
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 media模块提供多媒体编程的支持。目前仅支持音乐播放和媒体文件扫描。后续会结合UI加入视频播放等功能。
 
 需要注意是，使用该模块播放音乐时是在后台异步播放的，在脚本结束后会自动结束播放，因此可能需要插入诸如`sleep()`的语句来使脚本保持运行。例如：
-```
+```js
 //播放音乐
 media.playMusic("/sdcard/1.mp3");
 //让音乐播放完
@@ -19,7 +19,7 @@ sleep(media.getMusicDuration());
 
 媒体库包括相册、音乐库等，因此该函数可以用于把某个图片文件加入相册。
 
-```
+```js
 //请求截图
 requestScreenCapture(false);
 //截图
@@ -38,7 +38,7 @@ media.scanFile(path);
 
 播放音乐文件path。该函数不会显示任何音乐播放界面。如果文件不存在或者文件不是受支持的音乐格式，则抛出`UncheckedIOException`异常。
 
-```
+```js
 //播放音乐
 media.playMusic("/sdcard/1.mp3");
 //让音乐播放完
@@ -47,13 +47,13 @@ sleep(media.getMusicDuration());
 
 如果要循环播放音乐，则使用looping参数：
 ```
-```
+```js
 //传递第三个参数为true以循环播放音乐
 media.playMusic("/sdcard/1.mp3", 1, true);
 //等待三次播放的时间
 sleep(media.getMusicDuration() * 3);
 ```
-```
+
 
 如果要使用音乐播放器播放音乐，调用`app.viewFile(path)`函数。
 
@@ -64,7 +64,7 @@ sleep(media.getMusicDuration() * 3);
 
 例如，要把音乐调到1分钟的位置，为`media.musicSeekTo(60 * 1000)`。
 
-```
+```js
 //播放音乐
 media.playMusic("/sdcard/1.mp3");
 //调整到30秒的位置

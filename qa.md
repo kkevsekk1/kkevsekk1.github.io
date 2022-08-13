@@ -19,7 +19,7 @@
 ## 如何使打包的应用不显示主界面
 
 需要使用项目功能。新建项目后，修改项目下的`project.json`文件，增加以下条目：
-```
+```json
 "launchConfig": {
     "hideLogs": true
 }
@@ -27,7 +27,7 @@
 
 例如：
 
-```
+```json
 {
   "name": "项目名称",
   "versionName": "1.0.0",
@@ -46,7 +46,7 @@
 ## Auto.js自带的模块和函数中没有的功能如何实现
 
 由于Auto.js支持直接调用Android的API，对于Auto.js没有内置的函数，可以直接通过修改Android代码为JavaScript代码实现。例如旋转图片的Android代码为：
-```
+```java
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
@@ -62,7 +62,7 @@ public static Bitmap rotate(final Bitmap src,
 }
 ```
 转换为JavaScript的代码后为：
-```
+```js
 importClass(android.graphics.Bitmap);
 importClass(android.graphics.Matrix);
 
@@ -74,4 +74,4 @@ function rotate(src, degrees, px, py){
     return ret;
 }
 ```
-有关调用Android和Java的API的更多信息，参见[Work with Java](https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/Rhino/Scripting_Java)。
+有关调用 Android 和 Java 的 API 的更多信息，参见 [Work with Java](/workWithJava)。

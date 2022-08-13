@@ -1,6 +1,6 @@
 # websocket
 ` 4.2.8 新增 `
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 websocket模块，采用okhttp3 实现，本模块中包含了okhttp3 核心所有的类，下面讲解其基本的使用方法，更多的使用规则,可参考：(https://square.github.io/okhttp/)，这里涉及一些线程安全问题，请学习多线程，生命周期等内容。
 
@@ -48,8 +48,6 @@ setInterval(() => { // 防止主线程退出
     
 }, 1000);
 
-
-
 ```
 
-## 创建websocket 服务器端，一样支持，可以参考 okhttp官网。
+创建 websocket 服务器端，一样支持，可以参考 okhttp 官网。

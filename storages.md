@@ -1,6 +1,6 @@
 # Storages
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 storages模块提供了保存简单数据、用户配置等的支持。保存的数据除非应用被卸载或者被主动删除，否则会一直保留。
 
@@ -15,18 +15,18 @@ storages无法像Web开发中LocalStorage一样提供根据域名独立的存储
 创建一个本地存储并返回一个`Storage`对象。不同名称的本地存储的数据是隔开的，而相同名称的本地存储的数据是共享的。
 
 例如在一个脚本中，创建名称为ABC的存储并存入a=123:
-```
+```js
 var storage = storages.create("ABC");
 storage.put("a", 123);
 ```
 而在另一个脚本中是可以获取到ABC以及a的值的：
-```
+```js
 var storage = storages.create("ABC");
 log("a = " + storage.get("a"));
 ```
 
 因此，本地存储的名称比较重要，尽量使用含有域名、作者邮箱等唯一信息的名称来避免冲突，例如：
-```
+```js
 var storage = storages.create("2732014414@qq.com:ABC");
 ```
 

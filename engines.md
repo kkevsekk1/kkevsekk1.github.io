@@ -1,12 +1,12 @@
 # Engines
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 engines 模块包含了一些与脚本环境、脚本运行、脚本引擎有关的函数，包括运行其他脚本，关闭脚本等。
 
 例如，获取脚本所在目录：
 
-```
+```js
 toast(engines.myEngine().cwd());
 ```
 
@@ -26,13 +26,13 @@ toast(engines.myEngine().cwd());
 
 最简单的例子如下：
 
-```
+```js
 engines.execScript("hello world", "toast('hello world')");
 ```
 
 如果要循环运行，则：
 
-```
+```js
 //每隔3秒运行一次脚本，循环10次
 engines.execScript("hello world", "toast('hello world')", {
     loopTimes: 10,
@@ -42,7 +42,7 @@ engines.execScript("hello world", "toast('hello world')", {
 
 用字符串来编写脚本非常不方便，可以结合 `Function.toString()`的方法来执行特定函数:
 
-```
+```js
 function helloWorld(){
     //注意，这里的变量和脚本主体的变量并不共享
     toast("hello world");
@@ -52,7 +52,7 @@ engines.execScript("hello world", "helloWorld();\n" + helloWorld.toString());
 
 如果要传递变量，则可以把这些封装成一个函数：
 
-```
+```js
 function exec(action, args){
     args = args || {};
     engines.execScript(action.name, action + "(" + JSON.stringify(args) + ");\n" + action.toString());
@@ -78,7 +78,7 @@ exec(add, {a: 1, b:2});
 
 在新的脚本环境中运行脚本文件 path。返回一个[ScriptExecution](#ScriptExecution)对象。
 
-```
+```js
 engines.execScriptFile("/sdcard/脚本/1.js");
 ```
 
@@ -93,7 +93,7 @@ engines.execScriptFile("/sdcard/脚本/1.js");
 
 在新的脚本环境中运行录制文件 path。返回一个[ScriptExecution](#ScriptExecution)对象。
 
-```
+```js
 engines.execAutoFile("/sdcard/脚本/1.auto");
 ```
 
@@ -112,7 +112,7 @@ engines.execAutoFile("/sdcard/脚本/1.auto");
 **[v4.1.0 新增]**
 特别的，该对象可以通过`execArgv`来获取他的运行参数，包括外部参数、intent 等。例如：
 
-```
+```js
 log(engines.myEngine().execArgv);
 ```
 
@@ -124,7 +124,7 @@ log(engines.myEngine().execArgv);
 
 返回当前所有正在运行的脚本的脚本引擎[ScriptEngine](#scriptengine)的数组。
 
-```
+```js
 log(engines.all());
 ```
 
@@ -162,7 +162,7 @@ log(engines.all());
 
 返回当前脚本引擎正在执行的脚本对象。
 
-```
+```js
 log(engines.myEngine().getSource());
 ```
 
@@ -175,7 +175,7 @@ log(engines.myEngine().getSource());
 
 例如脚本 receiver.js 的内容如下：
 
-```
+```js
 //监听say事件
 events.on("say", function(words){
     toastLog(words);
@@ -186,7 +186,7 @@ setInterval(()=>{}, 1000);
 
 同一目录另一脚本可以启动他并发送该事件：
 
-```
+```js
 //运行脚本
 var e = engines.execScriptFile("./receiver.js");
 //等待脚本启动

@@ -11,7 +11,7 @@ app模块提供一系列函数，用于使用其他应用、与其他应用交�
 
 如果在Auto.js中运行则为Auto.js的版本号；在打包的软件中则为打包软件的版本号。
 
-```
+```js
 toastLog(app.versionCode);
 ```
 
@@ -22,7 +22,7 @@ toastLog(app.versionCode);
 
 如果在Auto.js中运行则为Auto.js的版本名称；在打包的软件中则为打包软件的版本名称。
 
-```
+```js
 toastLog(app.verionName);
 ```
 
@@ -43,7 +43,7 @@ Auto.js版本名称，例如"3.0.0 Beta"。
 
 该函数也可以作为全局函数使用。
 
-```
+```js
 launchApp("Auto.js");
 ```
 
@@ -54,7 +54,7 @@ launchApp("Auto.js");
 
 该函数也可以作为全局函数使用。
 
-```
+```js
 //启动微信
 launch("com.tencent.mm");
 ```
@@ -71,7 +71,7 @@ launch("com.tencent.mm");
 
 该函数也可以作为全局函数使用。
 
-```
+```js
 var name = getPackageName("QQ"); //返回"com.tencent.mobileqq"
 ```
 
@@ -82,7 +82,7 @@ var name = getPackageName("QQ"); //返回"com.tencent.mobileqq"
 
 该函数也可以作为全局函数使用。
 
-```
+```js
 var name = getAppName("com.tencent.mobileqq"); //返回"QQ"
 ```
 
@@ -100,7 +100,7 @@ var name = getAppName("com.tencent.mobileqq"); //返回"QQ"
 
 如果找不出可以查看该文件的应用，则抛出`ActivityNotException`。
 
-```
+```js
 //查看文本文件
 app.viewFile("/sdcard/1.txt");
 ```
@@ -112,7 +112,7 @@ app.viewFile("/sdcard/1.txt");
 
 如果找不出可以编辑该文件的应用，则抛出`ActivityNotException`。
 
-```
+```js
 //编辑文本文件
 app.editFile("/sdcard/1.txt/);
 ```
@@ -121,7 +121,7 @@ app.editFile("/sdcard/1.txt/);
 * `packageName` {string} 应用包名
 
 卸载应用。执行后会会弹出卸载应用的提示框。如果该包名的应用未安装，由应用卸载程序处理，可能弹出"未找到应用"的提示。
-```
+```js
 //卸载QQ
 app.uninstall("com.tencent.mobileqq");
 ```
@@ -146,7 +146,7 @@ app.uninstall("com.tencent.mobileqq");
 
 如果没有安装邮箱应用，则抛出`ActivityNotException`。
 
-```
+```js
 //发送邮件给10086@qq.com和10001@qq.com。
 app.sendEmail({
     email: ["10086@qq.com", "10001@qq.com"],
@@ -162,7 +162,7 @@ app.sendEmail({
 
 启动Auto.js的特定界面。该函数在Auto.js内运行则会打开Auto.js内的界面，在打包应用中运行则会打开打包应用的相应界面。
 
-```
+```js
 app.startActivity("console");
 ```
 
@@ -183,7 +183,7 @@ Intent(意图) 是一个消息传递对象，您可以使用它从其他应用�
 
 使用这些方法可以用来方便的调用其他应用。例如直接打开某个QQ号的个人卡片页，打开某个QQ号的聊天窗口等。
 
-```
+```js
 var qq = "2732014414";
 app.startActivity({ 
     action: "android.intent.action.VIEW", 
@@ -220,7 +220,7 @@ app.startActivity({ 
 根据选项，构造一个意图Intent对象。
 
 例如：
-```
+```js
 //打开应用来查看图片文件
 var i = app.intent({
     action: "VIEW",
@@ -233,7 +233,7 @@ context.startActivity(i);
 需要注意的是，除非应用专门暴露Activity出来，否则在没有root权限的情况下使用intent是无法跳转到特定Activity、应用的特定界面的。例如我们能通过Intent跳转到QQ的分享界面，是因为QQ对外暴露了分享的Activity；而在没有root权限的情况下，我们无法通过intent跳转到QQ的设置界面，因为QQ并没有暴露这个Activity。
 
 但如果有root权限，则在intent的参数加上`"root": true`即可。例如使用root权限跳转到Auto.js的设置界面为：
-```
+```js
 app.startActivity({
     packageName: "org.autojs.autojs",
     className: "org.autojs.autojs.ui.settings.SettingsActivity_",
@@ -251,7 +251,7 @@ app.startActivity({
 
 根据选项构造一个Intent，并启动该Activity。
 
-```
+```js
 app.startActivity({
     action: "SEND",
     type: "text/plain",
@@ -277,7 +277,7 @@ app.startActivity({
 
 发送以上特定名称的广播可以触发Auto.js的布局分析，方便脚本调试。这些广播在Auto.js发送才有效，在打包的脚本上运行将没有任何效果。
 
-```
+```js
 app.sendBroadcast("inspect_layout_bounds");
 ```
 
@@ -290,7 +290,7 @@ app.sendBroadcast("inspect_layout_bounds");
 根据选项构造一个Intent，转换为对应的shell的intent命令的参数。
 
 例如: 
-```
+```js
 shell("am start " + app.intentToShell({
     packageName: "org.autojs.autojs",
     className: "org.autojs.autojs.ui.settings.SettingsActivity_"

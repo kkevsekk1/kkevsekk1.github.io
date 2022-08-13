@@ -1,15 +1,17 @@
-shell即Unix Shell，在类Unix系统提供与操作系统交互的一系列命令。
+shell 即 Unix Shell，在类 Unix 系统提供与操作系统交互的一系列命令。
 
-很多程序可以用来执行shell命令，例如终端模拟器。
+很多程序可以用来执行 shell 命令，例如终端模拟器。
 
-在Auto.js大致等同于用adb执行命令"adb shell"。其实现包括两种方式：
+在 Auto.js 大致等同于用 adb 执行命令 "adb shell"。
+
+其实现包括两种方式：
 
 * 通过`java.lang.Runtime.exec`执行(shell, Tap, Home等函数)
 * 通过内嵌终端模拟器执行(RootAutomator, Shell等对象)
 
 # shell函数
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 ## shell(cmd[, root])
 * cmd {string} 要执行的命令
@@ -20,11 +22,14 @@ shell即Unix Shell，在类Unix系统提供与操作系统交互的一系列命�
 * result {string} 运行结果(stdout输出结果)
 * error {string} 运行的错误信息(stderr输出结果)。例如执行需要root权限的命令但没有授予root权限会返回错误信息"Permission denied"。
     
-示例(强制停止微信) ： 
-```
+
+示例（强制停止微信）： 
+```js
 var result = shell("am force-stop com.tencent.mm", true);
 log(result);
+
 console.show();
+
 if(result.code == 0){
   toast("执行成功");
 }else{
@@ -34,7 +39,7 @@ if(result.code == 0){
 
 # Shell
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 shell函数通过用来一次性执行单条命令并获取结果。如果有多条命令需要执行，用Shell对象的效率更高。这是因为，每次运行shell函数都会打开一个单独的shell进程并在运行结束后关闭他，这个过程需要一定的时间；而Shell对象自始至终使用同一个shell进程。
 
@@ -42,7 +47,7 @@ shell函数通过用来一次性执行单条命令并获取结果。如果有多
 * root {Boolean} 是否以root权限运行一个shell进程，默认为false。这将会影响其后使用该Shell对象执行的命令的权限
 
 Shell对象的"构造函数"。
-```
+```js
 var sh = new Shell(true);
 //强制停止微信
 sh.exec("am force-stop com.tencent.mm");
@@ -76,7 +81,7 @@ sh.exit();
 * onNewLine {Function} 每当shell有新的一行输出时便会调用该函数。其参数是一个字符串(不包括最后的换行符)。
 
 例如:
-```
+```js
 var sh = new Shell();
 sh.setCallback({
 	onNewLine: function(line){
@@ -186,14 +191,14 @@ am命令即Activity Manager命令，用于管理应用程序活动、服务等�
 ### display-size [reset|widthxheight]	
 替换模拟器/设备显示尺寸。此命令对于在不同尺寸的屏幕上测试您的应用非常有用，它支持使用大屏设备模仿小屏幕分辨率（反之亦然）。  
 示例：
-```
+```js
 shell("am display-size 1280x800", true);
 	
 ```
 ### display-density dpi 
 替换模拟器/设备显示密度。此命令对于在不同密度的屏幕上测试您的应用非常有用，它支持使用低密度屏幕在高密度环境环境上进行测试（反之亦然）。  
 示例：
-```
+```js
 shell("am display-density 480", true);
 ```
 ### to-uri intent	
@@ -417,8 +422,8 @@ screencap filename
 ```
 
 例如：
-```
-$ shell("screencap /sdcard/screen.png");
+```js
+shell("screencap /sdcard/screen.png");
 ```
 
 ### 列表文件
@@ -426,6 +431,6 @@ $ shell("screencap /sdcard/screen.png");
 ls filepath
 ```
 例如:
-```
+```js
 log(shell("ls /system/bin").result);
 ```

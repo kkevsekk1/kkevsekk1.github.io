@@ -2,21 +2,23 @@
 
 ui 模块提供了编写用户界面的支持。
 
-带有 ui 的脚本的的最前面必须使用`"ui";`指定 ui 模式，否则脚本将不会以 ui 模式运行。正确示范:
+带有 ui 的脚本的的最前面必须使用 `"ui";` 指定 ui 模式，否则脚本将不会以 ui 模式运行。
 
-```
+正确示范:
+
+```js
 "ui";
 
 //脚本的其他代码
 ```
 
-字符串"ui"的前面可以有注释、空行和空格**[v4.1.0 新增]**，但是不能有其他代码。
+字符串"ui"的前面可以有注释、空行和空格 `[v4.1.0 新增]`，但是不能有其他代码。
 
 界面是由视图(View)组成的。View 分成两种，控件(Widget)和布局(Layout)。控件(Widget)用来具体显示文字、图片、网页等，比如文本控件(text)用来显示文字，按钮控件(button)则可以显示一个按钮并提供点击效果，图片控件(img)则用来显示来自网络或者文件的图片，除此之外还有输入框控件(input)、进度条控件(progressbar)、单选复选框控件(checkbox)等；布局(Layout)则是装着一个或多个控件的"容器"，用于控制在他里面的控件的位置，比如垂直布局(vertical)会把他里面的控件从上往下依次显示(即纵向排列)，水平布局(horizontal)则会把他里面的控件从左往右依次显示(即横向排列)，以及帧布局(frame)，他会把他里面的控件直接在左上角显示，如果有多个控件，后面的控件会重叠在前面的控件上。
 
 我们使用 xml 来编写界面，并通过`ui.layout()`函数指定界面的布局 xml。举个例子：
 
-```
+```js
 "ui";
 ui.layout(
     <vertical>
@@ -34,7 +36,7 @@ ui.layout(
 
 如果我们把这个例子的垂直布局(vertical)改成水平布局(horizontal)，也即：
 
-```
+```js
 "ui";
 ui.layout(
     <horizontal>
@@ -50,7 +52,7 @@ ui.layout(
 
 一个控件可以指定多个属性(甚至可以不指定任何属性)，用空格隔开即可；布局同样也可以指定属性，例如:
 
-```
+```js
 "ui";
 ui.layout(
     <vertical bg="#ff0000">
@@ -77,7 +79,7 @@ ui.layout(
 
 View 的宽度，是属性`width`的缩写形式。可以设置的值为`*`, `auto`和具体数值。其中`*`表示宽度**尽量**填满父布局，而`auto`表示宽度将根据 View 的内容自动调整(自适应宽度)。例如：
 
-```
+```js
 "ui";
 ui.layout(
     <horizontal>
@@ -95,7 +97,7 @@ ui.layout(
 
 宽度属性也可以指定一个具体数值。例如`w="20"`，`w="20px"`等。不加单位的情况下默认单位为 dp，其他单位包括 px(像素), mm(毫米), in(英寸)。有关尺寸单位的更多内容，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
-```
+```js
 "ui";
 ui.layout(
     <horizontal>
@@ -117,7 +119,7 @@ View 的高度，是属性`height`的缩写形式。可以设置的值为`*`, `a
 
 View 的 id，用来区分一个界面下的不同控件和布局，一个界面的 id 在同一个界面下通常是唯一的，也就是一般不存在两个 View 有相同的 id。id 属性也是连接 xml 布局和 JavaScript 代码的桥梁，在代码中可以通过一个 View 的 id 来获取到这个 View，并对他进行操作(设置点击动作、设置属性、获取属性等)。例如：
 
-```
+```js
 "ui";
 ui.layout(
     <frame>
@@ -145,7 +147,7 @@ View 的"重力"。用于决定 View 的内容相对于 View 的位置，可以�
 
 例如对于一个按钮控件，`gravity="right"`会使其中的文本内容靠右显示。例如：
 
-```
+```js
 "ui";
 ui.layout(
     <frame>
@@ -164,7 +166,7 @@ ui.layout(
 
 View 在布局中的"重力"，用于决定 View 本身在他的**父布局**的位置，可以设置的值和 gravity 属性相同。注意把这个属性和 gravity 属性区分开来。
 
-```
+```js
 "ui";
 ui.layout(
     <frame w="*" h="*">
@@ -197,7 +199,7 @@ margin 为 View 和其他 View 的间距，即外边距。margin 属性包括四
 
 用一个例子来具体理解外边距的含义：
 
-```
+```js
 "ui";
 ui.layout(
     <horizontal>
@@ -221,7 +223,7 @@ ui.layout(
 
 View 的左外边距。如果该属性和 margin 属性指定的值冲突，则在后面的属性生效，前面的属性无效，例如`margin="20" marginLeft="10"`的左外边距为 10dp，其他外边距为 20dp。
 
-```
+```js
 "ui";
 ui.layout(
     <horizontal>
@@ -259,7 +261,7 @@ paddding 属性的值同样有三种格式：
 
 用一个例子来具体理解内边距的含义：
 
-```
+```js
 "ui";
 ui.layout(
     <frame w="*" h="*" gravity="center">
@@ -394,7 +396,7 @@ View 的变换中心坐标 y。用于 View 的旋转、放缩等变换的中心�
 
 另外在 xml 中是不能设置多行文本的，要在代码中设置。例如:
 
-```
+```js
 "ui";
 ui.layout(
     <vertical>
@@ -475,7 +477,7 @@ ui.myText.setText("第一行\n第二行\n第三行\n第四行");
 
 例如：
 
-```
+```js
 "ui";
 ui.layout(
     <vertical padding="16">
@@ -507,7 +509,7 @@ ui.ok.click(function(){
 
 上面图片效果的代码为：
 
-```
+```js
 "ui";
 ui.layout(
     <vertical>
@@ -604,7 +606,7 @@ ui.layout(
 
 例如，显示百度的 logo:
 
-```
+```js
 "ui";
 ui.layout(
     <frame>
@@ -616,7 +618,7 @@ ui.layout(
 再例如，显示文件/sdcard/1.png 的图片为 `<img src="file:///sdcard/1.png"/>`。
 再例如，使 base64 显示一张钱包小图片为：
 
-```
+```js
 "ui";
 ui.layout(
     <frame>
@@ -708,7 +710,7 @@ ui.layout(
 垂直布局中的控件可以通过`layout_weight`属性来控制控件高度占垂直布局高度的比例。如果为一个控件指定`layout_weight`, 则这个控件的高度=垂直布局剩余高度 \* layout_weight / weightSum；如果不指定 weightSum, 则 weightSum 为所有子控件的 layout_weight 之和。所谓"剩余高度"，指的是垂直布局中减去没有指定 layout_weight 的控件的剩余高度。
 例如:
 
-```
+```js
 "ui";
 ui.layout(
     <vertical h="100dp">
@@ -722,7 +724,7 @@ ui.layout(
 在这个布局中，三个控件的 layout_weight 都是 1，也就是他们的高度都会占垂直布局高度的 1/3，都是 33.3dp.
 再例如：
 
-```
+```js
 "ui";
 ui.layout(
     <vertical h="100dp">
@@ -736,7 +738,7 @@ ui.layout(
 在这个布局中，第一个控件高度为 1/4, 第二个控件为 2/4, 第三个控件为 1/4.
 再例如：
 
-```
+```js
 "ui";
 ui.layout(
     <vertical h="100dp" weightSum="5">
@@ -750,7 +752,7 @@ ui.layout(
 在这个布局中，因为指定了 weightSum 为 5, 因此第一个控件高度为 1/5, 第二个控件为 2/5, 第三个控件为 1/5.
 再例如：
 
-```
+```js
 "ui";
 ui.layout(
     <vertical h="100dp">
@@ -765,7 +767,7 @@ ui.layout(
 
 垂直布局的 layout_weight 属性还可以用于控制他的子控件高度占满剩余空间，例如：
 
-```
+```js
 "ui";
 ui.layout(
     <vertical h="100dp">

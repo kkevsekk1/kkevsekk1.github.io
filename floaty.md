@@ -3,7 +3,7 @@
 floaty模块提供了悬浮窗的相关函数，可以在屏幕上显示自定义悬浮窗，控制悬浮窗大小、位置等。
 
 悬浮窗在脚本停止运行时会自动关闭，因此，要保持悬浮窗不被关闭，可以用一个空的setInterval来实现，例如：
-```
+```js
 setInterval(()=>{}, 1000);
 ```
 
@@ -23,7 +23,7 @@ setInterval(()=>{}, 1000);
 
 跳转到系统的悬浮窗权限请求界面。
 
-```javascript
+```js
 if (!floaty.checkPermission()) {
     // 没有悬浮窗权限，提示用户并跳转请求
     toast("本脚本需要悬浮窗权限来显示悬浮窗，请在随后的界面中允许并重新运行本脚本。");
@@ -45,7 +45,7 @@ if (!floaty.checkPermission()) {
 其中layout参数可以是xml布局或者一个View，更多信息参见ui模块的说明。
 
 例子：
-```
+```js
 var w = floaty.window(
     <frame gravity="center">
         <text id="text">悬浮文字</text>
@@ -58,7 +58,7 @@ setTimeout(()=>{
 这段代码运行后将会在屏幕上显示悬浮文字，并在两秒后消失。
 
 另外，因为脚本运行的线程不是UI线程，而所有对控件的修改操作需要在UI线程执行，此时需要用`ui.run`，例如:
-```
+```js
 ui.run(function(){
     w.text.setText("文本");
 });
@@ -75,7 +75,7 @@ ui.run(function(){
 
 而且，该悬浮窗支持完全全屏，可以覆盖状态栏，因此可以做护眼模式之类的应用。
 
-```
+```js
 var w = floaty.rawWindow(
     <frame gravity="center">
         <text id="text">悬浮文字</text>
@@ -155,7 +155,7 @@ setTimeout(()=>{
 设置悬浮窗是否可触摸，如果为true, 则悬浮窗将接收到触摸、点击等事件并且无法继续传递到悬浮窗下面；如果为false, 悬浮窗上的触摸、点击等事件将被直接传递到悬浮窗下面。处于安全考虑，被悬浮窗接收的触摸事情无法再继续传递到下层。
 
 可以用此特性来制作护眼模式脚本。
-```
+```js
 var w = floaty.rawWindow(
     <frame gravity="center" bg="#44ffcc00"/>
 );
@@ -190,7 +190,7 @@ setTimeout(()=>{
 设置悬浮窗宽高。
 
 特别地，如果设置为-1，则为占满全屏；设置为-2则为根据悬浮窗内容大小而定。例如：
-```
+```js
 var w = floaty.rawWindow(
     <frame gravity="center" bg="#77ff0000">
         <text id="text">悬浮文字</text>

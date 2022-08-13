@@ -1,6 +1,6 @@
 # Files
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 files模块提供了一些常见的文件处理，包括文件读写、移动、复制、删掉等。
 
@@ -12,7 +12,7 @@ files模块提供了一些常见的文件处理，包括文件读写、移动、
 
 返回路径path是否是文件。
 
-```
+```js
 log(files.isDir("/sdcard/文件夹/")); //返回false
 log(files.isDir("/sdcard/文件.txt")); //返回true
 ```
@@ -23,7 +23,7 @@ log(files.isDir("/sdcard/文件.txt")); //返回true
 
 返回路径path是否是文件夹。
 
-```
+```js
 log(files.isDir("/sdcard/文件夹/")); //返回true
 log(files.isDir("/sdcard/文件.txt")); //返回false
 ```
@@ -47,7 +47,7 @@ log(files.isDir("/sdcard/文件.txt")); //返回false
 
 创建一个文件或文件夹并返回是否创建成功。如果文件已经存在，则直接返回`false`。
 
-```
+```js
 files.create("/sdcard/新文件夹/");
 ```
 
@@ -57,7 +57,7 @@ files.create("/sdcard/新文件夹/");
 
 创建一个文件或文件夹并返回是否创建成功。如果文件所在文件夹不存在，则先创建他所在的一系列文件夹。如果文件已经存在，则直接返回`false`。
 
-```
+```js
 files.createWithDirs("/sdcard/新文件夹/新文件夹/新文件夹/1.txt");
 ```
 
@@ -81,7 +81,7 @@ files.createWithDirs("/sdcard/新文件夹/新文件夹/新文件夹/1.txt");
 
 读取文本文件path的所有内容并返回。如果文件不存在，则抛出`FileNotFoundException`。
 
-```
+```js
 log(files.read("/sdcard/1.txt"));
 ```
 
@@ -94,7 +94,7 @@ log(files.read("/sdcard/1.txt"));
 注意，该数组是Java的数组，不具有JavaScript数组的forEach, slice等函数。
 
 一个以16进制形式打印文件的例子如下:
-```
+```js
 var data = files.readBytes("/sdcard/1.png");
 var sb = new java.lang.StringBuilder();
 for(var i = 0; i < data.length; i++){
@@ -110,7 +110,7 @@ log(sb.toString());
 
 把text写入到文件path中。如果文件存在则覆盖，不存在则创建。
 
-```
+```js
 var text = "文件内容";
 //写入文件
 files.write("/sdcard/1.txt", text);
@@ -130,7 +130,7 @@ app.viewFile("/sdcard/1.txt");
 * `encoding` {string} 字符编码
 
 把text追加到文件path的末尾。如果文件不存在则创建。
-```
+```js
 var text = "追加的文件内容";
 files.append("/sdcard/1.txt", text);
 files.append("/sdcard/1.txt", text);
@@ -228,13 +228,13 @@ app.viewFile("/sdcard/1.txt");
 列出文件夹path下的满足条件的文件和文件夹的名称的数组。如果不加filter参数，则返回所有文件和文件夹。
 
 列出sdcard目录下所有文件和文件夹为:
-```
+```js
 var arr = files.listDir("/sdcard/");
 log(arr);
 ```
 
 列出脚本目录下所有js脚本文件为:
-```
+```js
 var dir = "/sdcard/脚本/";
 var jsFiles = files.listDir(dir, function(name){
     return name.endsWith(".js") && files.isFile(files.join(dir, name));

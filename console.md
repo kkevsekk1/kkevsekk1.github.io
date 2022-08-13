@@ -1,6 +1,6 @@
 # Console
 
-> Stability: 2 - Stable
+> 稳定性: 稳定
 
 控制台模块提供了一个和Web浏览器中相似的用于调试的控制台。用于输出一些调试信息、中间结果等。
 console模块中的一些函数也可以直接作为全局函数使用，例如log, print等。
@@ -11,7 +11,7 @@ console模块中的一些函数也可以直接作为全局函数使用，例如l
 * `autoHide` {boolean} 是否自动隐藏，默认false当程序结束的时候是否自动隐藏控制
 显示控制台。这会显示一个控制台的悬浮窗(需要悬浮窗权限)。
 
-``` js
+```js
 console.show(true); //程序结束自动 隐藏控制台
 console.show();   //结束不会自动隐藏控制台
 ```
@@ -32,7 +32,7 @@ console.show();   //结束不会自动隐藏控制台
 
 打印到控制台，并带上换行符。 可以传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)](http://man7.org/linux/man-pages/man3/printf.3.html) 中的代替值（参数都会传给 util.format()）。
 
-``` js
+```js
 const count = 5;
 console.log('count: %d', count);
 // 打印: count: 5 到 stdout
@@ -74,7 +74,7 @@ console.log('count:', count);
 
 断言。如果value为false则输出错误信息message并停止脚本运行。
 
-``` js
+```js
 var a = 1 + 1;
 console.assert(a == 2, "加法出错啦");
 ```
@@ -126,7 +126,7 @@ console.trace('Show me');
 **部分机型可能会有控制台不显示输入框的情况，属于bug。**
 
 例如：
-``` js
+```js
 var n = console.input("请输入一个数字:"); 
 //输入123之后：
 toast(n + 1);
@@ -142,7 +142,7 @@ toast(n + 1);
 部分机型可能会有控制台不显示输入框的情况，属于bug。
 
 例如：
-```
+```js
 var n = console.rawInput("请输入一个数字:"); 
 //输入123之后：
 toast(n + 1);
@@ -154,7 +154,7 @@ toast(n + 1);
 * `h` {number} 高度
 
 设置控制台的大小，单位像素。
-```
+```js
 console.show();
 //设置控制台大小为屏幕的四分之一
 console.setSize(device.width / 2, device.height / 2);
@@ -166,7 +166,7 @@ console.setSize(device.width / 2, device.height / 2);
 
 设置控制台的位置，单位像素。
 
-```
+```js
 console.show();
 console.setPosition(100, 100);
 ```
@@ -181,7 +181,7 @@ console.setPosition(100, 100);
     * `filePattern` {string} 日志写入格式，参见[PatternLayout](http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html)
 
 设置日志保存的路径和配置。例如把日志保存到"/sdcard/1.txt":
-``` js
+```js
 console.setGlobalLogConfig({
     "file": "/sdcard/1.txt"
 });
@@ -203,10 +203,10 @@ console.setGlobalLogConfig({
 设置标题名称，字体颜色，标题栏高度
 
 
-``` js
-  console.setTitle("中文","#ff11ee00",30);
-  console.setTitle("中文");
-  console.setTitle("中文","#ff11ee00");
+```js
+console.setTitle("中文","#ff11ee00",30);
+console.setTitle("中文");
+console.setTitle("中文","#ff11ee00");
   
 ```
 
@@ -217,7 +217,7 @@ console.setGlobalLogConfig({
 
 **需要在显示控制台之后才能设置，否则空指针**
 
-``` js
+```js
 
 function myrandom(min,max){
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -249,10 +249,8 @@ threads.start(function () {
 控制 console 是否可以输入文字 
 
 
-``` js
-        console.setCanInput(false);
-
-  
+```js
+console.setCanInput(false);
 ```
 
 ## console.setBackgroud(color)
@@ -262,10 +260,8 @@ threads.start(function () {
 
 **需要在显示控制台之后才能设置，否则空指针**
 
-``` js
-        console.setBackgroud("#33ef0000");
-
-  
+```js
+console.setBackgroud("#33ef0000");
 ```
 
 ## console.setMaxLines(maxLines);
@@ -274,10 +270,8 @@ threads.start(function () {
 设置 console 显示最大行数，默认-1，不限 ，超出行数系统会清空，从0开始显示
 不限制，显示列表过长，android内存又不足，系统会回收console的引用，即console 将不显示。
 
-``` js
-        console.setMaxLines(500);
-
-  
+```js
+console.setMaxLines(500);  
 ```
 
 
