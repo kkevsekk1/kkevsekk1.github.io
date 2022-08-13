@@ -74,4 +74,4 @@ function rotate(src, degrees, px, py){
     return ret;
 }
 ```
-有关调用Android和Java的API的更多信息，参见[Work with Java](https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/Rhino/Scripting_Java)。
+有关调用 Android 和 Java 的 API 的更多信息，参见 [Work with Java](/workWithJava)。

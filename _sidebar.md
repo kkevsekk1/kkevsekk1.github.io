@@ -32,6 +32,6 @@
     - [多媒体 - Media](/media)
     - [传感器 - Sensor](/sensors)
     - [执行命令 - Shell](/shell)
-    - [调用 Java](https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/Rhino/Scripting_Java)
+    - [调用 Java](/workWithJava)
 
 - [常见问题](/qa)
