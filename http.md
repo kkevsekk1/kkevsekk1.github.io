@@ -14,7 +14,7 @@ http模块提供一些进行http请求的函数。
 
 最简单GET请求如下:
 
-```
+```js
 console.show();
 var r = http.get("www.baidu.com");
 log("code = " + r.statusCode);
@@ -23,7 +23,7 @@ log("html = " + r.body.string());
 
 采用回调形式的GET请求如下：
 
-```
+```js
 console.show();
 http.get("www.baidu.com", {}, function(res, err){
 	if(err){
@@ -36,7 +36,7 @@ http.get("www.baidu.com", {}, function(res, err){
 ```
 
 如果要增加HTTP头部信息，则在options参数中添加，例如：
-```
+```js
 console.show();
 var r = http.get("www.baidu.com", {
 	headers: {
@@ -49,7 +49,7 @@ log("html = " + r.body.string());
 ```
 
 一个请求天气并解析返回的天气JSON结果的例子如下：
-```
+```js
 var city = "广州";
 var res = http.get("http://www.sojson.com/open/api/weather/json.shtml?city=" + city);
 if(res.statusCode != 200){
@@ -75,7 +75,7 @@ if(res.statusCode != 200){
 
 一个模拟表单提交登录淘宝的例子如下:
 
-```
+```js
 var url = "https://login.taobao.com/member/login.jhtml";
 var username = "你的用户名";
 var password = "你的密码";
@@ -102,7 +102,7 @@ JSON格式指的是，将会调用`JSON.stringify()`把data对象转换为JSON�
 
 一个调用图灵机器人接口的例子如下：
 
-```
+```js
 var url = "http://www.tuling123.com/openapi/api";
 r = http.postJson(url, {
     key: "65458a5df537443b89b31f1c03202a80",
@@ -125,7 +125,7 @@ toastLog(r.body.string());
 4. [fileName, mimeType, filePath]
 
 其中1属于非文件参数，2、3、4为文件参数。举个例子，最简单的文件上传的请求为：
-```
+```js
 var res = http.postMultipart(url, {
 	file: open("/sdcard/1.txt")
 });
@@ -133,21 +133,21 @@ log(res.body.string());
 ```
 
 如果使用格式2，则代码为
-```
+```js
 var res = http.postMultipart(url, {
 	file: ["1.txt", "/sdcard/1.txt"]
 });
 log(res.body.string());
 ```
 如果使用格式3，则代码为
-```
+```js
 var res = http.postMultipart(url, {
 	file: ["1.txt", "text/plain", "/sdcard/1.txt"]
 });
 log(res.body.string());
 ```
 如果使用格式2的同时要附带非文件参数"appId=abcdefghijk"，则为:
-```
+```js
 var res = http.postMultipart(url, {
 	appId: "adcdefghijk",
 	file: open("/sdcard/1.txt")
@@ -190,7 +190,7 @@ HTTP请求的响应。
 有关HTTP状态码的信息，参见[菜鸟教程：HTTP状态码](http://www.runoob.com/http/http-status-codes.html)。
 
 例子：
-```
+```js
 var res = http.get("www.baidu.com");
 if(res.statusCode >= 200 && res.statusCode < 300){
 	toast("页面获取成功!");
@@ -209,7 +209,7 @@ if(res.statusCode >= 200 && res.statusCode < 300){
 有关HTTP头部信息，参见[菜鸟教程：HTTP响应头信息](http://www.runoob.com/http/http-header-fields.html)。
 
 例子:
-```
+```js
 console.show();
 var res = http.get("www.qq.com");
 console.log("HTTP Headers:")

@@ -21,13 +21,13 @@
 
 示例：
 
-```
+```js
 auto("fast");
 ```
 
 示例 2：
 
-```
+```js
 auto();
 ```
 
@@ -60,7 +60,7 @@ SimpleActionAutomator 提供了一些模拟简单操作的函数，例如点击�
 该函数可以点击大部分包含文字的按钮。例如微信主界面下方的"微信", "联系人", "发现", "我"的按钮。  
 通常与 while 同时使用以便点击按钮直至成功。例如:
 
-```
+```js
 while(!click("扫一扫"));
 ```
 
@@ -144,7 +144,7 @@ UiSelector 即选择器，用于通过各种条件选取屏幕上的控件，再
 
 控件有各种属性，包括文本(text), 描述(desc), 类名(className), id 等等。我们通常用一个控件的属性来找到这个控件，例如，想要点击 QQ 聊天窗口的"发送"按钮，我们就可以通过他的文本属性为"发送"来找到这个控件并点击他，具体代码为:
 
-```
+```js
 var sendButton = text("发送").findOne();
 sendButton.click();
 ```
@@ -157,7 +157,7 @@ sendButton.click();
 
 我们注意到这个图标的 desc(描述)属性为"搜索"，那么我们就可以通过 desc 属性来定位这个控件，得到点击搜索图标的代码为:
 
-```
+```js
 desc("搜索").findOne().click();
 ```
 
@@ -201,7 +201,7 @@ desc("搜索").findOne().click();
 
 这些操作包含了绝大部分控件操作。根据这些我们可以很容易写出一个"刷屏"脚本(代码仅为示例，请不要在别人的群里测试，否则容易被踢):
 
-```
+```js
 while(true){
     className("EditText").findOne().setText("刷屏...");
     text("发送").findOne().clicK();
@@ -210,7 +210,7 @@ while(true){
 
 上面这段代码也可以写成：
 
-```
+```js
 while(true){
     className("EditText").setText("刷屏...");
     text("发送").clicK();
@@ -223,7 +223,7 @@ while(true){
 
 长按可查看控件信息，注意到其 scrollable 属性为 true，并找出其 id 为"recent_chat_list"，从而下滑 QQ 消息列表的代码为：
 
-```
+```js
 id("recent_chat_list").className("AbsListView").findOne().scrollForward();
 ```
 
@@ -357,7 +357,7 @@ desc 属性同样是定位控件的利器。
 
 需要注意的是，如果正则表达式是字符串，则需要使用`\\`来表达`\`(也即 Java 正则表达式的形式)，例如`textMatches("\\d+")`匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如`textMatches(/\d+/)`。但如果使用字符串的正则表达式则该字符串不能以"/"同时以"/"结束，也即不能写诸如`textMatches("/\\d+/")`的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
 
-```
+```js
 idMatches("[a-zA-Z]+")
 ```
 
@@ -474,7 +474,7 @@ idMatches("[a-zA-Z]+")
 
 这个条件用于限制选择器在某一个区域选择控件。例如要在屏幕上半部分寻找文本控件 TextView，代码为:
 
-```
+```js
 var w = className("TextView").boundsInside(0, 0, device.width, device.height / 2).findOne();
 log(w.text());
 ```
@@ -492,7 +492,7 @@ log(w.text());
 
 这个条件用于限制控件的范围必须包含所给定的范围。例如给定一个点(500, 300), 寻找在这个点上的可点击控件的代码为:
 
-```
+```js
 var w = boundsContains(500, 300, device.width - 500, device.height - 300).clickable().findOne();
 w.click();
 ```
@@ -547,7 +547,7 @@ drawingOrder 为一个控件在父控件中的绘制顺序，通常可以用于�
 
 可以用这个条件来寻找可滑动控件来滑动界面。例如滑动 Auto.js 的脚本列表的代码为:
 
-```
+```js
 className("android.support.v7.widget.RecyclerView").scrollable().findOne().scrollForward();
 //或者classNameEndsWith("RecyclerView").scrollable().findOne().scrollForward();
 ```
@@ -587,7 +587,7 @@ className("android.support.v7.widget.RecyclerView").scrollable().findOne().scrol
 
 示例：
 
-```
+```js
 //启动Auto.js
 launchApp("Auto.js");
 //在6秒内找出日志图标的控件
@@ -625,7 +625,7 @@ if(w != null){
 
 可以通过 empty()函数判断找到的是否为空。例如：
 
-```
+```js
 var c = className("AbsListView").find();
 if(c.empty()){
     toast("找到啦");
@@ -648,7 +648,7 @@ if(c.empty()){
 
 判断屏幕上是否存在控件符合选择器所确定的条件。例如要判断某个文本出现就执行某个动作，可以用：
 
-```
+```js
 if(text("某个文本").exists()){
     //要支持的动作
 }
@@ -660,7 +660,7 @@ if(text("某个文本").exists()){
 
 例如要等待包含"哈哈哈"的文本控件出现的代码为：
 
-```
+```js
 textContains("哈哈哈").waitFor();
 ```
 
@@ -672,7 +672,7 @@ textContains("哈哈哈").waitFor();
 
 例如，要找出屏幕上所有文本长度为 10 的文本控件的代码为：
 
-```
+```js
 var uc = className("TextView").filter(function(w){
     return w.text().length == 10;
 });
@@ -717,7 +717,7 @@ UiObject 表示一个控件，可以通过这个对象获取到控件的属性�
 
 该函数只能用于输入框控件，并且当前输入框控件有选中的文本。可以通过`setSelection()`函数来设置输入框选中的内容。
 
-```
+```js
 var et = className("EditText").findOne();
 //选中前两个字
 et.setSelection(0, 2);
@@ -741,7 +741,7 @@ if(et.copy()){
 
 对输入框控件进行粘贴操作，把剪贴板内容粘贴到输入框中，并返回是否操作成功。
 
-```
+```js
 //设置剪贴板内容为“你好”
 setClip("你好");
 var et = className("EditText").findOne();
@@ -818,7 +818,7 @@ et.paste();
 
 返回该控件的所有子控件组成的控件集合。可以用于遍历一个控件的子控件，例如：
 
-```
+```js
 className("AbsListView").findOne().children()
     .forEach(function(child){
         log(child.className());
@@ -842,7 +842,7 @@ className("AbsListView").findOne().children()
 
 遍历子控件的示例：
 
-```
+```js
 var list = className("AbsListView").findOne();
 for(var i = 0; i < list.childCount(); i++){
     var child = list.child(i);
@@ -864,14 +864,14 @@ for(var i = 0; i < list.childCount(); i++){
 
 示例：
 
-```
+```js
 var b = text("Auto.js").findOne().bounds();
 toast("控件在屏幕上的范围为" + b);
 ```
 
 如果一个控件本身无法通过`click()`点击，那么我们可以利用`bounds()`函数获取其坐标，再利用坐标点击。例如：
 
-```
+```js
 var b = desc("打开侧拉菜单").findOne().bounds();
 click(b.centerX(), b.centerY());
 //如果使用root权限，则用 Tap(b.centerX(), b.centerY());
@@ -919,7 +919,7 @@ click(b.centerX(), b.centerY());
 
 例如，对于酷安动态列表，我们可以遍历他的子控件(每个动态列表项)，并在每个子控件中依次寻找点赞数量和图标，对于点赞数量小于 10 的点赞：
 
-```
+```js
 //找出动态列表
 var list = id("recycler_view").findOne();
 //遍历动态
@@ -955,7 +955,7 @@ UiCollection"继承"于数组，实际上是一个 UiObject 的数组，因此�
 
 例如，采用 forEach 遍历屏幕上所有的文本控件并打印出文本内容的代码为：
 
-```
+```js
 console.show();
 className("TextView").find().forEach(function(tv){
     if(tv.text() != ""){
@@ -966,7 +966,7 @@ className("TextView").find().forEach(function(tv){
 
 也可以使用传统的数组遍历方式：
 
-```
+```js
 console.show();
 var uc = className("TextView").find();
 for(var i = 0; i < uc.length; i++){
@@ -1029,7 +1029,7 @@ UiCollection 的每一个元素都是 UiObject，我们可以取出他的元素�
 
 例如：
 
-```
+```js
 var names = id("name").find();
 //在集合
 var clickableNames = names.find(clickable());

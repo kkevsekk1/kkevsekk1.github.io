@@ -48,8 +48,6 @@ setInterval(() => { // 防止主线程退出
     
 }, 1000);
 
-
-
 ```
 
-## 创建websocket 服务器端，一样支持，可以参考 okhttp官网。
+创建 websocket 服务器端，一样支持，可以参考 okhttp 官网。

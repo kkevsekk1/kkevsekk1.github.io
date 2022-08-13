@@ -83,7 +83,7 @@
 
 返回两个颜色是否相等。**注意该函数会忽略Alpha通道的值进行比较*。
 
-```
+```js
 log(colors.equals("#112233", "#112234"));
 log(colors.equals(0xFF112233, 0xFF223344));
 ```
@@ -147,7 +147,7 @@ images模块提供了一些手机设备中常见的图片处理函数，包括�
 需要注意的是，image对象创建后尽量在不使用时进行回收，同时避免循环创建大量图片。因为图片是一种占用内存比较大的资源，尽管Auto.js通过各种方式（比如图片缓存机制、垃圾回收时回收图片、脚本结束时回收所有图片）尽量降低图片资源的泄漏和内存占用，但是糟糕的代码仍然可以占用大量内存。
 
 Image对象通过调用`recycle()`函数来回收。例如：
-```
+```js
 // 读取图片
 var img = images.read("./1.png");
 //对图片进行操作
@@ -187,7 +187,7 @@ img.recycle();
 
 把图片image以PNG格式保存到path中。如果文件不存在会被创建；文件存在会被覆盖。
 
-```
+```js
 //把图片压缩为原来的一半质量并保存
 var img = images.read("/sdcard/1.png");
 images.save(img, "/sdcard/1.jpg", "jpg", 50);
@@ -237,7 +237,7 @@ app.viewFile("/sdcard/1.jpg");
 
 从图片img的位置(x, y)处剪切大小为w * h的区域，并返回该剪切区域的新图片。
 
-```
+```js
 var src = images.read("/sdcard/1.png");
 var clip = images.clip(src, 100, 100, 400, 400);
 images.save(clip, "/sdcard/clip.png");
@@ -457,7 +457,7 @@ images.save(clip, "/sdcard/clip.png");
 建议在本软件界面运行该函数，在其他软件界面运行时容易出现一闪而过的黑屏现象。  
 
 示例:
-```
+```js
 //请求截图
 if(!requestScreenCapture()){
     toast("请求截图失败");
@@ -487,7 +487,7 @@ for(var i = 0; i < 10; i++){
 
 例子:
 
-```
+```js
 //请求横屏截图
 requestScreenCapture(true);
 //截图
@@ -532,7 +532,7 @@ toast(colors.toString(color));
 该函数也可以作为全局函数使用。
 
 一个循环找色的例子如下：
-```
+```js
 requestScreenCapture();
 
 //循环找色，找到红色(#ff0000)时停止并报告坐标
@@ -547,7 +547,7 @@ while(true){
 ```
 
 一个区域找色的例子如下：
-```
+```js
 //读取本地图片/sdcard/1.png
 var img = images.read("/sdcard/1.png");
 //判断图片是否加载成功
@@ -572,7 +572,7 @@ if(point){
 区域找色的简便方法。
 
 相当于
-```
+```js
 images.findColor(img, color, {
      region: [x, y, width, height],
      threshold: threshold
@@ -598,7 +598,7 @@ images.findColor(img, color, {
 
 示例：
 (通过找QQ红点的颜色来判断是否有未读消息)
-```
+```js
 requestScreenCapture();
 launchApp("QQ");
 sleep(1200);
@@ -627,7 +627,7 @@ if(p){
 例如，对于代码`images.findMultiColors(img, "#123456", [[10, 20, "#ffffff"], [30, 40, "#000000"]])`，假设图片在(100, 200)的位置的颜色为#123456, 这时如果(110, 220)的位置的颜色为#fffff且(130, 240)的位置的颜色为#000000，则函数返回点(100, 200)。
 
 如果要指定找色区域，则在options中指定，例如:
-```
+```js
 var p = images.findMultiColors(img, "#123456", [[10, 20, "#ffffff"], [30, 40, "#000000"]], {
     region: [0, 960, 1080, 960]
 });
@@ -651,7 +651,7 @@ var p = images.findMultiColors(img, "#123456", [[10, 20, "#ffffff"], [30, 40, "#
 
 
 一个判断微博客户端的某个微博是否被点赞过的例子：
-```
+```js
 requestScreenCapture();
 //找到点赞控件
 var like = id("ly_feed_like_icon").findOne();
@@ -684,7 +684,7 @@ if(images.detectsColor(img, "#fed9a8", x, y)){
 该函数也可以作为全局函数使用。
 
 一个最简单的找图例子如下：
-```
+```js
 var img = images.read("/sdcard/大图.png");
 var templ = images.read("/sdcard/小图.png");
 var p = findImage(img, templ);
@@ -696,7 +696,7 @@ if(p){
 ```
 
 稍微复杂点的区域找图例子如下：
-```
+```js
 auto();
 requestScreenCapture();
 var wx = images.read("/sdcard/微信图标.png");
@@ -716,7 +716,7 @@ if(p){
 ## images.findImageInRegion(img, template, x, y[, width, height, threshold])
 
 区域找图的简便方法。相当于：
-```
+```js
 images.findImage(img, template, {
     region: [x, y, width, height],
     threshold: threshold
@@ -748,7 +748,7 @@ images.findImage(img, template, {
 * `similarity` {number} 相似度
 
 例如: 
-```
+```js
 var result = images.matchTemplate(img, template, {
     max: 100
 });
@@ -806,7 +806,7 @@ result.matches.forEach(match => {
 
 对匹配结果进行排序，并返回排序后的结果。
 
-```
+```js
 var result = images.matchTemplate(img, template, {
     max: 100
 });
