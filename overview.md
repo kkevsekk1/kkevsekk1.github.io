@@ -4,9 +4,9 @@
 
 欢迎更多开发者参与这个项目的维护与升级。
 
-文档中很多原项目路径，在原项目没有删除的情况下我并不打算替换掉，以表对于原作者的尊重。这篇文档里有加密相关的内容可能和实际运行情况有冲突，我会逐步完善更新，程序代码，尽可能保持一致。
+这篇文档里有加密相关的内容可能和实际运行情况有冲突，我会逐步完善更新，程序代码，尽可能保持一致。
 
-AutoX.js 使用 JavaScript 作为脚本语言，目前使用 [Rhino 1.7.14](https://github.com/mozilla/rhino) 作为脚本引擎，支持 ES5 与部分 ES6 特性。
+AutoX.js 使用 JavaScript 作为脚本语言，目前使用 [Rhino 1.7.13](https://github.com/mozilla/rhino) 作为脚本引擎，支持 ES5 与部分 ES6 特性。
 
 - 学习 AutoX.js 的 API 之前，建议先学习 JavaScript 的基本语法。
 - 如果想要在电脑上开发 AutoX.js，可以使用 VSCode 以及 [AutoX.js 插件](https://marketplace.visualstudio.com/items?itemName=aaroncheng.auto-js-vsce-fixed)。
@@ -69,4 +69,4 @@ AutoX.js 使用 JavaScript 作为脚本语言，目前使用 [Rhino 1.7.14](http
 
 不用担心你不懂，我们可以讨论交流! 
 
-强烈希望有人能 PR ！
+欢迎大家 PR ，共同参与开源！
