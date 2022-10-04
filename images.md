@@ -87,52 +87,53 @@
 log(colors.equals("#112233", "#112234"));
 log(colors.equals(0xFF112233, 0xFF223344));
 ```
+# colors
 
-# colors.BLACK
+## colors.BLACK
 
 黑色，颜色值 #FF000000
 
-# colors.DKGRAY  
+## colors.DKGRAY  
 
 深灰色，颜色值 #FF444444
 
-# colors.GRAY  
+## colors.GRAY  
 
 灰色，颜色值 #FF888888
 
-# colors.LTGRAY  
+## colors.LTGRAY  
 
 亮灰色，颜色值 #FFCCCCCC
 
-# colors.WHITE  
+## colors.WHITE  
 
 白色，颜色值 #FFFFFFFF
 
-# colors.RED  
+## colors.RED  
 
 红色，颜色值 #FFFF0000
 
-# colors.GREEN  
+## colors.GREEN  
 
 绿色，颜色值 #FF00FF00
 
-# colors.BLUE  
+## colors.BLUE  
 
 蓝色，颜色值 #FF0000FF
 
-# colors.YELLOW  
+## colors.YELLOW  
 
 黄色，颜色值 #FFFFFF00
 
-# colors.CYAN  
+## colors.CYAN  
 
 青色，颜色值 #FF00FFFF
 
-# colors.MAGENTA  
+## colors.MAGENTA  
 
 品红色，颜色值 #FFFF00FF
 
-# colors.TRANSPARENT  
+## colors.TRANSPARENT  
 
 透明，颜色值 #00000000
 
@@ -442,38 +443,51 @@ images.save(clip, "/sdcard/clip.png");
 ## 找图找色
 
 ## images.requestScreenCapture([landscape])
-* `landscape` {boolean} 布尔值， 表示将要执行的截屏是否为横屏。如果landscape为false, 则表示竖屏截图; true为横屏截图。
+- `landscape` {boolean} 截屏方向
+  - `true` 横屏截图
+  - `false` 竖屏截图
+  - 不指定值，由当前设备屏幕方向决定截图方向
+- `return` {boolean}
 
-向系统申请屏幕截图权限，返回是否请求成功。
+向系统申请屏幕截图权限，返回是否请求成功,仅需执行一次
 
-第一次使用该函数会弹出截图权限请求，建议选择“总是允许”。
-
-这个函数只是申请截图权限，并不会真正执行截图，真正的截图函数是`captureScreen()`。
-
-该函数在截图脚本中只需执行一次，而无需每次调用`captureScreen()`都调用一次。
-
-**如果不指定landscape值，则截图方向由当前设备屏幕方向决定**，因此务必注意执行该函数时的屏幕方向。
-
-建议在本软件界面运行该函数，在其他软件界面运行时容易出现一闪而过的黑屏现象。  
+建议在本软件界面运行该函数，在其他软件界面运行时容易出现一闪而过的黑屏现象。
 
 示例:
 ```js
 //请求截图
+//第一次使用该函数会弹出截图权限请求，建议选择“总是允许”。
 if(!requestScreenCapture()){
     toast("请求截图失败");
     exit();
 }
-//连续截图10张图片(间隔1秒)并保存到存储卡目录
+//连续截图 10 张图片(间隔 1 秒)并保存到存储卡目录
 for(var i = 0; i < 10; i++){
     captureScreen("/sdcard/screencapture" + i + ".png");
     sleep(1000);
 }
 
 ```
+```js
+//安卓版本高于Android 9
+if(device.sdkInt>28){
+    //等待截屏权限申请并同意
+    threads.start(function () {
+        packageName('com.android.systemui').text('立即开始').waitFor();
+        text('立即开始').click();
+    });
+}
+//申请截屏权限
+if (!requestScreenCapture()) {
+    toast("请求截图失败");
+    exit()
+}
+```
 
 该函数也可以作为全局函数使用。
 
 ## images.captureScreen()
+- `return` {Image}
 
 截取当前屏幕并返回一个Image对象。
 
@@ -518,16 +532,20 @@ toast(colors.toString(color));
 
 坐标系以图片左上角为原点。以图片左侧边为y轴，上侧边为x轴。
 
+## images.readPixels(path)
+- `path` {string} 图片的地址
+- `return` {Object} 包括图片的像素数据和宽高，{data,width,height}
+
+读取图片的像素数据和宽高。
+
 ## images.findColor(image, color, options)
-* `image` {Image} 图片
-* `color` {number} | {string} 要寻找的颜色的RGB值。如果是一个整数，则以0xRRGGBB的形式代表RGB值（A通道会被忽略）；如果是字符串，则以"#RRGGBB"代表其RGB值。
-* `options` {Object} 选项
+- `image` {Image} 图片
+- `color` {number} | {string} 要寻找的颜色的RGB值。如果是一个整数，则以0xRRGGBB的形式代表RGB值（A通道会被忽略）；如果是字符串，则以"#RRGGBB"代表其RGB值。
+- `options` {Object} 选项包括：
+  - `region` {Array} 找色区域。是一个两个或四个元素的数组。(region[0], region[1])表示找色区域的左上角；region[2]*region[3]表示找色区域的宽高。如果只有region只有两个元素，则找色区域为(region[0], region[1])到屏幕右下角。如果不指定region选项，则找色区域为整张图片。
+  - `threshold` {number} 找色时颜色相似度的临界值，范围为0~255（越小越相似，0为颜色相等，255为任何颜色都能匹配）。默认为4。threshold和浮点数相似度(0.0~1.0)的换算为 similarity = (255 - threshold) / 255.
 
 在图片中寻找颜色color。找到时返回找到的点Point，找不到时返回null。
-
-选项包括：
-* `region` {Array} 找色区域。是一个两个或四个元素的数组。(region[0], region[1])表示找色区域的左上角；region[2]*region[3]表示找色区域的宽高。如果只有region只有两个元素，则找色区域为(region[0], region[1])到屏幕右下角。如果不指定region选项，则找色区域为整张图片。
-* `threshold` {number} 找色时颜色相似度的临界值，范围为0~255（越小越相似，0为颜色相等，255为任何颜色都能匹配）。默认为4。threshold和浮点数相似度(0.0~1.0)的换算为 similarity = (255 - threshold) / 255.
 
 该函数也可以作为全局函数使用。
 
@@ -610,6 +628,23 @@ if(p){
 }
 ```
 
+## images.findAllPointsForColor(img, color, options)
+- `img` {Image} 图片
+- `color` {number | string} 要检测的颜色
+- `options` {Object} 选项包括：
+   - `region` {Array} 找色区域。是一个两个或四个元素的数组。(region[0], region[1])表示找色区域的左上角；region[2]*region[3]表示找色区域的宽高。如果  `region`只有两个元素，则找色区域为(region[0], region[1])到图片右下角。如果不指定`region`选项，则找色区域为整张图片。
+   - `similarity` {number} 找色时颜色相似度，范围为 0~1（越大越相似，1 为颜色相等，0 为任何颜色都能匹配）。
+   - `threshold` {number} 找色时颜色相似度的临界值，范围为 0 ~ 255（越小越相似，0 为颜色相等，255 为任何颜色都能匹配）。默认为 4。
+   - `similarity`与`threshold`的换算为`similarity` = (255 - `threshold`) / 255 。二选一，同时存在则以`similarity`为准。
+- `return` {Array}
+
+在图片中寻找所有颜色为`color`的点。找到时返回找到的点 Point 的数组，找不到时返回`null`。
+
+例如找出所有白色的点：
+```js
+log(images.findAllPointsForColor(img, "#ffffff"));
+```
+
 ## images.findMultiColors(img, firstColor, colors[, options])
 * `img` {Image} 要找色的图片
 * `firstColor` {number} | {string} 第一个点的颜色
@@ -672,14 +707,12 @@ if(images.detectsColor(img, "#fed9a8", x, y)){
 ## images.findImage(img, template[, options])
 * `img` {Image} 大图片
 * `template` {Image} 小图片（模板）
-* `options` {Object} 找图选项
+* `options` {Object} 选项包括：
+  - `threshold` {number} 图片相似度。取值范围为0~1的浮点数。默认值为0.9。
+  - `region` {Array} 找图区域。参见findColor函数关于region的说明。
+  - `level` {number} **一般而言不必修改此参数**。不加此参数时该参数会根据图片大小自动调整。找图算法是采用图像金字塔进行的, level参数表示金字塔的层次, level越大可能带来越高的找图效率，但也可能造成找图失败（图片因过度缩小而无法分辨）或返回错误位置。因此，除非您清楚该参数的意义并需要进行性能调优，否则不需要用到该参数。
 
 找图。在大图片img中查找小图片template的位置（模块匹配），找到时返回位置坐标(Point)，找不到时返回null。
-
-选项包括：
-* `threshold` {number} 图片相似度。取值范围为0~1的浮点数。默认值为0.9。
-* `region` {Array} 找图区域。参见findColor函数关于region的说明。
-* `level` {number} **一般而言不必修改此参数**。不加此参数时该参数会根据图片大小自动调整。找图算法是采用图像金字塔进行的, level参数表示金字塔的层次, level越大可能带来越高的找图效率，但也可能造成找图失败（图片因过度缩小而无法分辨）或返回错误位置。因此，除非您清楚该参数的意义并需要进行性能调优，否则不需要用到该参数。
 
 该函数也可以作为全局函数使用。
 
