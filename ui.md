@@ -64,7 +64,7 @@ ui.layout(
 
 第三行`bg="#ff0000"`指定了垂直布局的背景色(bg)为"#ff0000"，这是一个 RGB 颜色，表示红色(有关 RGB 的相关知识参见[RGB 颜色对照表](http://tool.oschina.net/commons?type=3))。第四行的`textSize="20sp"`则指定了按钮控件的字体大小(textSize)为"20sp"，sp 是一个字体单位，暂时不用深入理会。上述代码的效果如图：
 
-![ex-properties](images/ex1-properties.png)
+![ex-properties](images/ex-properties.png)
 
 一个界面便由一些布局和控件组成。为了便于文档阅读，我们再说明一下以下术语：
 
@@ -320,7 +320,7 @@ View 的最小宽度。该值不总是生效的，取决于其父布局是否有
 
 有关该属性的单位，参见[尺寸的单位: Dimension](#尺寸的单位-dimension)。
 
-## visbility
+## visibility
 
 View 的可见性，该属性可以决定 View 是否显示出来。其值可以为：
 
@@ -368,7 +368,7 @@ View 的变换中心坐标 y。用于 View 的旋转、放缩等变换的中心�
 
 ## textColor
 
-设置字体的颜色，可以是 RGB 格式的颜色(例如#ff00ff)，或者颜色名称(例如 red, green 等)，具体参见[颜色](#ui_颜色)。
+设置字体的颜色，可以是 RGB 格式的颜色(例如#ff00ff)，或者颜色名称(例如 red, green 等)，具体参见[颜色](#颜色)。
 
 示例, 红色字体：`<text text="红色字体" textColor="red"/>`
 
@@ -497,7 +497,7 @@ ui.ok.click(function(){
 
 效果如图：
 
-![ex-input](ex-input.png)
+![ex-input](images/ex-input.png)
 
 除此之外，输入框控件有另外一些主要属性(虽然这些属性对于文本控件也是可用的但一般只用于输入框控件)：
 
@@ -841,20 +841,99 @@ ui.layout(
 # ui
 
 ## ui.layout(xml)
+- `xml` {XML} | {string}  布局XML或者XML字符串
 
-## ui.inflate(xml[, parent])
+将布局XML渲染为视图（View）对象， 并设置为当前视图。
 
+## ui.inflate(xml[, parent = null, attachToParent = false])
+- `xml` {string} | {XML} 布局XML或者XML字符串
+- `parent` {View} 父视图
+- `attachToParent` {boolean} 是否渲染的View加到父视图中，默认为false
+返回 {View}
+
+将布局XML渲染为视图（View）对象。如果该View将作为某个View的子View，我们建议传入parent参数，这样在渲染时依赖于父视图的一些布局属性能够正确应用。
+
+此函数用于动态创建、显示View。
+```js
+"ui";
+
+$ui.layout(
+    <linear id="container">
+    </linear>
+);
+
+// 动态创建3个文本控件，并加到container容器中
+// 这里仅为实例，实际上并不推荐这种做法，如果要展示列表，
+// 使用list组件；动态创建十几个、几十个View会让界面卡顿
+for (let i = 0; i < 3; i++) {
+    let textView = $ui.inflate(
+        <text textColor="#000000" textSize="14sp"/>
+    , $ui.container);
+    textView.attr("text", "文本控件" + i);
+    $ui.container.addView(textView);
+}
+```
 ## ui.findView(id)
+- `id` {string}  View的ID
+- 返回 {View}
+
+在当前视图中根据ID查找相应的视图对象并返回。如果当前未设置视图或找不到此ID的视图时返回`null`。
+
+一般我们都是通过`ui.xxx`来获取id为xxx的控件，如果xxx是一个ui已经有的属性，就可以通过`ui.findView()`来获取这个控件
 
 ## ui.finish()
+结束当前活动并销毁界面。
 
 ## ui.setContentView(view)
+-`view` {View}
+
+将视图对象设置为当前视图。
 
 ## ui.run(callback)
+-`callback` {Function} 回调函数
+-返回 {any} callback的执行结果
+
+将`callback`在UI线程中执行。如果当前已经在UI线程中，则直接执行`callback`；否则将`callback`抛到UI线程中执行（加到UI线程的消息循环的末尾），**并等待callback执行结束(阻塞当前线程)**。
 
 ## ui.post(callback[, daley])
+- `callback` {Function} 回调函数
+- `delay `{number} 延迟，单位毫秒
+
+将`callback`加到UI线程的消息循环中，并延迟`delay`毫秒后执行（不能准确保证一定在delay毫秒后执行）。
+
+此函数可以用于UI线程中延时执行动作（sleep不能在UI线程中使用），也可以用于子线程中更新UI。
+
+```js
+"ui";
+
+ui.layout(
+    <frame>
+        <text id="result"/>
+    </frame>
+);
+
+ui.result.attr("text", "计算中");
+// 在子线程中计算1+ ... + 10000000
+threads.start({
+    let sum = 0;
+    for (let i = 0; i < 1000000; i++) {
+        sum += i;
+    }
+    // 由于不能在子线程操作UI，所以要抛到UI线程执行
+    ui.post(() => {
+        ui.result.attr("text", String(sum));
+    });
+});
+```
 
 ## ui.statusBarColor(color)
+- `color` {string | number} 颜色
+
+设置当前界面的状态栏颜色。
+```js
+"ui";
+ui.statusBarColor("#000000");
+```
 
 ## ui.showPopupMenu(view, menu)
 
