@@ -7,19 +7,17 @@ floaty模块提供了悬浮窗的相关函数，可以在屏幕上显示自定�
 setInterval(()=>{}, 1000);
 ```
 
-## floaty.checkPermission()
+# Floaty
 
-##### [4.2.17 新增]
+## floaty.checkPermission()
+**[4.2.17 新增]**
 
 - 返回 {boolean}
 
 返回当前应用是否有悬浮窗权限。（不会触发请求权限操作）
 
-
-
 ## floaty.requestPermission()
-
-##### [4.2.17 新增]
+**[4.2.17 新增]**
 
 跳转到系统的悬浮窗权限请求界面。
 
@@ -38,7 +36,7 @@ if (!floaty.checkPermission()) {
 
 * `layout` {xml} | {View} 悬浮窗界面的XML或者View
 
-指定悬浮窗的布局，创建并**显示**一个悬浮窗，返回一个`FloatyWindow`对象。
+指定悬浮窗的布局，创建并**显示**一个悬浮窗，返回一个[FloatyWindow](#floatywindow)对象。
 
 该悬浮窗自带关闭、调整大小、调整位置按键，可根据需要调用`setAdjustEnabled()`函数来显示或隐藏。
 
@@ -69,7 +67,7 @@ ui.run(function(){
 ## floaty.rawWindow(layout)
 * `layout` {xml} | {View} 悬浮窗界面的XML或者View
 
-指定悬浮窗的布局，创建并**显示**一个原始悬浮窗，返回一个`FloatyRawWindow`对象。
+指定悬浮窗的布局，创建并**显示**一个原始悬浮窗，返回一个[FloatyRawWindow](#floatyrawwindow)对象。
 
 与`floaty.window()`函数不同的是，该悬浮窗不会增加任何额外设施（例如调整大小、位置按钮），您可以根据自己需要编写任何布局。
 
