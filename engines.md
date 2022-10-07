@@ -9,6 +9,7 @@ engines 模块包含了一些与脚本环境、脚本运行、脚本引擎有关
 ```js
 toast(engines.myEngine().cwd());
 ```
+# Engines
 
 ## engines.execScript(name, script[, config])
 
@@ -20,7 +21,7 @@ toast(engines.myEngine().cwd());
   - `interval` {number} 循环运行时两次运行之间的时间间隔，默认为 0
   - `path` {Array} | {string} 指定脚本运行的目录。这些路径会用于 require 时寻找模块文件。
 
-在新的脚本环境中运行脚本 script。返回一个[ScriptExectuion](#scriptexecution)对象。
+在新的脚本环境中运行脚本 script。返回一个[ScriptExectuion](#ScriptExecution)对象。
 
 所谓新的脚本环境，指定是，脚本中的变量和原脚本的变量是不共享的，并且，脚本会在新的线程中运行。
 
@@ -33,7 +34,7 @@ engines.execScript("hello world", "toast('hello world')");
 如果要循环运行，则：
 
 ```js
-//每隔3秒运行一次脚本，循环10次
+//每隔 3 秒运行一次脚本，循环 10 次
 engines.execScript("hello world", "toast('hello world')", {
     loopTimes: 10,
     interval: 3000
@@ -107,7 +108,7 @@ engines.execAutoFile("/sdcard/脚本/1.auto");
 
 ## engines.myEngine()
 
-返回当前脚本的脚本引擎对象([ScriptEngine](#scriptengine))
+返回当前脚本的脚本引擎对象([ScriptEngine](#ScriptEngine))
 
 **[v4.1.0 新增]**
 特别的，该对象可以通过`execArgv`来获取他的运行参数，包括外部参数、intent 等。例如：
@@ -122,7 +123,7 @@ log(engines.myEngine().execArgv);
 
 - 返回 {Array}
 
-返回当前所有正在运行的脚本的脚本引擎[ScriptEngine](#scriptengine)的数组。
+返回当前所有正在运行的脚本的脚本引擎[ScriptEngine](#ScriptEngine)的数组。
 
 ```js
 log(engines.all());
@@ -136,15 +137,25 @@ log(engines.all());
 
 ## ScriptExecution.getEngine()
 
-返回执行该脚本的脚本引擎对象([ScriptEngine](#scriptengine))
+返回执行该脚本的脚本引擎对象([ScriptEngine](#ScriptEngine))
 
 ## ScriptExecution.getConfig()
 
-返回该脚本的运行配置([ScriptConfig](#scriptconfig))
+返回该脚本的运行配置([ScriptConfig](#ScriptConfig))
 
 # ScriptEngine
 
 脚本引擎对象。
+
+## ScriptEngine.isDestroyed()
+- 返回 {Boolean}
+
+检测该脚本是否执行结束
+```
+let e = engines.execScriptFile("xx.js");
+sleep(2000);
+log(e.getEngine().isDestroyed())
+```
 
 ## ScriptEngine.forceStop()
 
@@ -176,7 +187,7 @@ log(engines.myEngine().getSource());
 例如脚本 receiver.js 的内容如下：
 
 ```js
-//监听say事件
+//监听 say 事件
 events.on("say", function(words){
     toastLog(words);
 });
