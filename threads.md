@@ -2,14 +2,14 @@
 
 > 稳定性: 实验
 
-threads 模块提供了多线程支持，可以启动新线程来运行脚本。
+Threads 模块提供了多线程支持，可以启动新线程来运行脚本。
 
 脚本主线程会等待所有子线程执行完成后才停止执行，因此如果子线程中有死循环，请在必要的时候调用`exit()`来直接停止脚本或`threads.shutDownAll()`来停止所有子线程。
 
 通过`threads.start()`启动的所有线程会在脚本被强制停止时自动停止。
 
 由于 JavaScript 自身没有多线程的支持，因此您可能会遇到意料之外的问题。
-
+# threads
 ## threads.start(action)
 
 - `action` {Function} 要在新线程执行的函数
@@ -127,13 +127,13 @@ thread.join();
 toast("sum = " + sum);
 ```
 
-## isAlive()
+## Thread.isAlive()
 
 - 返回 {boolean}
 
 返回线程是否存活。如果线程仍未开始或已经结束，返回`false`; 如果线程已经开始或者正在运行中，返回`true`。
 
-## waitFor()
+## Thread.waitFor()
 
 等待线程开始执行。调用`threads.start()`以后线程仍然需要一定时间才能开始执行，因此调用此函数会等待线程开始执行；如果线程已经处于执行状态则立即返回。
 
@@ -149,7 +149,7 @@ thread.setTimeout(function(){
 
 ## Thread.setTimeout(callback, delay\[, ...args\])
 
-参见[timers.setTimeout()](timers.html#timers_settimeout_callback_delay_args)。
+参见[timers.setTimeout](timers.md#settimeoutcallback-delay-args)。
 
 区别在于, 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出`IllegalStateException`。
 
@@ -170,31 +170,31 @@ thread.setTimeout(function(){
 
 ## Thread.setInterval(callback, delay\[, ...args\])
 
-参见[timers.setInterval()](timers.html#timers_setinterval_callback_delay_args)。
+参见[timers.setInterval()](timers.md#setintervalcallback-delay-args)。
 
 区别在于, 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出`IllegalStateException`。
 
 ## Thread.setImmediate(callback[, ...args])
 
-参见[timers.setImmediate()](timers.html#timers_setimmediate_callback_delay_args)。
+参见[timers.setImmediate](timers.md#setimmediatecallback-args)。
 
 区别在于, 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出`IllegalStateException`。
 
 ## Thread.clearInterval(id)
 
-参见[timers.clearInterval()](timers.html#timers_clearinterval_id)。
+参见[timers.clearInterval()](timers.md#clearintervalid)。
 
 区别在于, 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出`IllegalStateException`。
 
 ## Thread.clearTimeout(id)
 
-参见[timers.clearTimeout()](timers.html#timers_cleartimeout_id)。
+参见[timers.clearTimeout()](timers.md#cleartimeoutid)。
 
 区别在于, 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出`IllegalStateException`。
 
 ## Thread.clearImmediate(id)
 
-参见[timers.clearImmediate()](timers.html#timers_clearimmediate_id)。
+参见[timers.clearImmediate()](timers.md#clearimmediateid)。
 
 区别在于, 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出`IllegalStateException`。
 

@@ -1,4 +1,4 @@
-# 综述
+# 综述 <!-- {docsify-ignore-all} -->
 
 由于原作者不再维护 [Auto.js](https://github.com/hyb1996/Auto.js)，我计划在原来4.1版本的基础上继续维护项目，并将原项目命名为 [AutoX.js](https://github.com/kkevsekk1/AutoX)。
 

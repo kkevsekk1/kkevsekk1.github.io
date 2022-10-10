@@ -144,11 +144,11 @@
 此函数依赖于root权限。
 
 ## Text(text)
-* text {string} 要输入的文字，只能为英文或英文符号
+* `text` {string} 要输入的文字，只能为英文或英文符号
 输入文字text。例如`Text("aaa");`
 
 ## KeyCode(code)
-* code {number} | <String> 要按下的按键的数字代码或名称。参见下表。
+* `code` {number} | <String> 要按下的按键的数字代码或名称。参见下表。
 模拟物理按键。例如`KeyCode(29)`和`KeyCode("KEYCODE_A")`是按下A键。
 
 # 附录: KeyCode对照表
@@ -239,6 +239,3 @@ KeyCode             KeyEvent Value
 * KEYCODE_NOTIFICATION 83  
 * KEYCODE_SEARCH 84  
 * TAG_LAST_ KEYCODE 85  
-
-
-

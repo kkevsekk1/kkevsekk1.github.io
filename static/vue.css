@@ -191,6 +191,7 @@ main.hidden {
   display: none;
 }
 .anchor {
+  word-break: break-word;
   display: inline-block;
   text-decoration: none;
   transition: all 0.3s;

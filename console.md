@@ -4,9 +4,6 @@
 
 控制台模块提供了一个和Web浏览器中相似的用于调试的控制台。用于输出一些调试信息、中间结果等。
 console模块中的一些函数也可以直接作为全局函数使用，例如log, print等。
-
-
-
 ## console.show(autoHide)
 * `autoHide` {boolean} 是否自动隐藏，默认false当程序结束的时候是否自动隐藏控制
 显示控制台。这会显示一个控制台的悬浮窗(需要悬浮窗权限)。
@@ -15,9 +12,6 @@ console模块中的一些函数也可以直接作为全局函数使用，例如l
 console.show(true); //程序结束自动 隐藏控制台
 console.show();   //结束不会自动隐藏控制台
 ```
-
-
-
 ## console.hide()
 
 隐藏控制台悬浮窗。
@@ -26,7 +20,7 @@ console.show();   //结束不会自动隐藏控制台
 
 清空控制台。
 
-## console.log([data][, ...args])#
+## console.log([data][, ...args])
 * `data` {any}
 * `...args` {any}
 
@@ -69,23 +63,23 @@ console.log('count:', count);
 与console.log类似，但输出结果以红色字体显示。输出优先级高于warn, 用于输出错误信息。
 
 ## console.assert(value, message)
-* value {any} 要断言的布尔值
-* message {string} value为false时要输出的信息
+* `value` {any} 要断言的布尔值
+* `message` {string} value为false时要输出的信息
 
 断言。如果value为false则输出错误信息message并停止脚本运行。
 
 ```js
 var a = 1 + 1;
-console.assert(a == 2, "加法出错啦");
+console.assert(a == 3, "加法出错啦");
 ```
 ## console.time([label])
 **[v4.1.0新增]**
 * `label` {String} 计时器标签，可省略
 
-启动一个定时器，用以计算一个操作的持续时间。
-定时器由一个唯一的 `label` 标识。
-当调用 `console.timeEnd()` 时，可以使用相同的 `label` 来停止定时器，并以毫秒为单位将持续时间输出到控制台。
-重复启动同一个标签的定时器会覆盖之前启动同一标签的定时器。
+启动一个计时器，用以计算一个操作的持续时间。
+计时器由一个唯一的 `label` 标识。
+若`label`重复，则会覆盖上一个同名`label`的计时器。
+以同名 `label`调用 `console.timeEnd()` 来停止计时器，并以毫秒为单位将持续时间输出到控制台。
 
 ## console.timeEnd(label)
 **[v4.1.0新增]**
@@ -121,7 +115,7 @@ console.trace('Show me');
 * `data` {any}
 * `...args` {any}
 
-与console.log一样输出信息，并在控制台显示输入框等待输入。按控制台的确认按钮后会将输入的字符串用eval计算后返回。
+与`console.log`一样输出信息，并在控制台显示输入框等待输入。按控制台的确认按钮后会将输入的字符串用`eval`计算后返回。
 
 **部分机型可能会有控制台不显示输入框的情况，属于bug。**
 
@@ -256,9 +250,8 @@ console.setCanInput(false);
 ## console.setBackgroud(color)
 **[v4.2.5新增]**
 * `color`  {string} 颜色值 #AARRGGBB
-设置 console 背景色
 
-**需要在显示控制台之后才能设置，否则空指针**
+设置 console 背景色,**需要在显示控制台之后才能设置，否则空指针**
 
 ```js
 console.setBackgroud("#33ef0000");
@@ -273,8 +266,4 @@ console.setBackgroud("#33ef0000");
 ```js
 console.setMaxLines(500);  
 ```
-
-
-
-
-
+## console.setBackground()

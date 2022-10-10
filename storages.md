@@ -10,9 +10,9 @@ storages保存的数据在脚本之间是共享的，任何脚本只要知道sto
 storages无法像Web开发中LocalStorage一样提供根据域名独立的存储，因为脚本的路径随时可能改变。
 
 ## storages.create(name)
-* `name` {string} 本地存储名称
+* `name` {string} 本地存储名称 
 
-创建一个本地存储并返回一个`Storage`对象。不同名称的本地存储的数据是隔开的，而相同名称的本地存储的数据是共享的。
+创建一个本地存储并返回一个[`Storage`](#storage)对象。不同名称的本地存储的数据是隔开的，而相同名称的本地存储的数据是共享的。
 
 例如在一个脚本中，创建名称为ABC的存储并存入a=123:
 ```js
@@ -35,7 +35,7 @@ var storage = storages.create("2732014414@qq.com:ABC");
 
 删除一个本地存储以及他的全部数据。如果该存储不存在，返回false；否则返回true。
 
-# Storages
+# Storage
 
 ## Storage.get(key[, defaultValue])
 * `key` {string} 键值
