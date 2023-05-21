@@ -16,6 +16,7 @@ const axios = require('axios');
 * `ArrayBuffer` 不支持处理和解析
 * `XMLHttpRequest.overrideMimeType()`
 * `XMLHttpRequest.timeout` 暂不支持设置
+* 上传和下载进度事件
 
 支持的`responseType`:
 * `text`
