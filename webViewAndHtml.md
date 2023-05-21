@@ -1,5 +1,70 @@
 # WebView 与 HTML
+## *JsBridge
+v6.3.9新增  
+html>>
+```html
+<html>
+  <body style="font: size 2em">
+    <div style="font-size: 100px">原内容</div>
+    <!-- 导入依赖包，也可以不加，不过需要监听AutoxJsBridgeReady事件后才能使用$autox -->
+    <script src="autox://sdk.v1.js"></script>
+    <script>
+      function addText(text) {
+        const div = document.createElement("div");
+        div.innerHTML = text;
+        document.body.appendChild(div);
+      }
+      //注册一个监听函数
+      $autox.registerHandler("jsTest", (data, callBack) => {
+        addText(`来自安卓调用，data=${data}`);
+        setTimeout(() => {
+          //回调安卓
+          callBack("web回调数据");
+        }, 1000);
+      });
+      //调用安卓端
+      $autox.callHandler("test", "web调用数据", (data) => {
+        addText("安卓回调, data:" + data);
+      });
 
+      document.addEventListener("AutoxJsBridgeReady", () => {
+        //$autox.
+      });
+    </script>
+  </body>
+</html>
+```
+js代码  
+```js
+"ui";
+
+ui.layout(`
+    <vertical>
+        <webview id="web" h="*"/>
+    </vertical>`)
+
+ui.web.loadUrl("file://" + files.path("./网页.html"))
+/*
+    注意：在web与安卓端传递的数据只能是字符串，其他数据需自行使用JSON序列化
+    在调用callHandler时传入了回调函数，但web端没有调用则会造成内存泄露。
+    jsBridge自动注入依赖于webViewClient，如设置了自定义webViewClient则需要在合适的时机（页面加载完成后）调用webview.injectionJsBridge()手动注入
+*/
+//注册一个监听函数
+ui.web.jsBridge.registerHandler("test", (data, callBack) => {
+    toastLog("web调用安卓,data:" + data)
+    setTimeout(() => {
+        //回调web
+        callBack("1155")
+    }, 2000)
+})
+//定时器中等待web加载完成
+setTimeout(() => {
+    ui.web.jsBridge.callHandler('jsTest', '数据', (data) => {
+        toastLog('web回调,data:' + data)
+    })
+}, 1000)
+```
+## 纯js实现
 ```js
 "ui";
 ui.layout(

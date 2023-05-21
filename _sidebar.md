@@ -36,5 +36,8 @@
     - [WebView 与 HTML](/webViewAndHtml)
     - [执行命令 - Shell](/shell)
     - [调用 Java](/workWithJava)
+    - [axios](/axios)
+- npm模块
+    - [cheerio](/npm/cheerio)
 
 - [常见问题](/qa)
