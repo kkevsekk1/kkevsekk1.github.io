@@ -1,11 +1,10 @@
 # axios
+v6.3.9新增
 > <font color="#ec5315">稳定性: 实验</font>
 
 <font color="#ef5952">**注意**: 这个模块是异步的，返回的全部都是`Promise`，如果你的程序有大量阻塞函数，请谨慎使用</font>
 这个模块不会自动加载，如需使用，请用
 ```js
-const axios = require('axios/index.js');
-//或  在子模块中不可用
 const axios = require('axios');
 ```
 模块使用方法与axios完全一致，请参阅[官方网站](https://www.axios-http.cn/docs/intro)，以下只介绍一些在autox中特有的内容。   
@@ -23,6 +22,7 @@ const axios = require('axios');
 * `json`
 * `blob`
 * `inputstream` java输入流
+* `stream` Readable可读流 \*v6.4.0新增
 
 支持的请求体数据类型:
 * `RequestBody` okhttp3.RequestBody对象
@@ -83,7 +83,7 @@ axios.post('http://baidu.com', blob).then(function (res) {
 ```
 
 ## axios.browser
-用于模拟浏览器环境的对象，包含`XMLHttpRequest`、`FormData`等，除了`FormData`，其他对象都不建议直接使用。
+用于模拟浏览器环境的对象，包含`XMLHttpRequest`、`FormData`等，除了`FormData`，其他对象都不建议使用。
 
 ## axios.utils
 包含一些操作blob对象方法

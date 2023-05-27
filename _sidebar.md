@@ -39,5 +39,9 @@
     - [axios](/axios)
 - npm模块
     - [cheerio](/npm/cheerio)
+    - [buffer](/npm/buffer)
+    - [stream](/npm/stream)
+    - [event-stream](/npm/event-stream)
+    - [events](/npm/events)
 
 - [常见问题](/qa)
