@@ -628,9 +628,9 @@ if(w != null){
 ```js
 var c = className("AbsListView").find();
 if(c.empty()){
-    toast("找到啦");
-}else{
     toast("没找到╭(╯^╰)╮");
+}else{
+    toast("找到啦");
 }
 ```
 
