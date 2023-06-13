@@ -1,9 +1,10 @@
 # cheerio
+v6.3.9新增
 > <font color="#FF34FF17">稳定性: 稳定</font>
 
 这是一个用于解析和生成html/xml的库，使用方法请参阅[官方网站](https://github.com/cheeriojs/cheerio)，该模块不会自动加载，如需使用
 ```
-const cheerio = require('npm/cheerio');
+const cheerio = require('cheerio');
 ```
 
 这里简单介绍一下在autojs中的用途。  
@@ -35,7 +36,6 @@ ui.text2.setText(text)
 
 使用`cheerio`则可以像这样处理:
 ```
-"ui";
 const cheerio = require('npm/cheerio');
 let text = "变量文本"
 let $ = cheerio.load( `<vertical>
@@ -50,4 +50,3 @@ log(xml)
 ui.layout(xml)
 ```
 高级的用法还可以将xml组件化，列表生成等
-
