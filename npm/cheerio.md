@@ -35,8 +35,8 @@ ui.text2.setText(text)
 这3种方法无论哪种都有些缺陷，第一种变量不是全局的则会报错，第二种字符串不能包含特殊字符，否则解析xml时报错，第三种调用安卓方法有一定的性能问题，且不够灵活。  
 
 使用`cheerio`则可以像这样处理:
-```
-const cheerio = require('npm/cheerio');
+```js
+const cheerio = require('cheerio');
 let text = "变量文本"
 let $ = cheerio.load( `<vertical>
             <text class="text" textColor="#000000" textSize="18sp" maxLines="1" />
