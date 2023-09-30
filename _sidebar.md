@@ -43,5 +43,6 @@
     - [stream](/npm/stream)
     - [event-stream](/npm/event-stream)
     - [events](/npm/events)
+    - [lodash](/npm/lodash)
 
 - [常见问题](/qa)
