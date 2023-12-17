@@ -44,5 +44,6 @@
     - [event-stream](/npm/event-stream)
     - [events](/npm/events)
     - [lodash](/npm/lodash)
+    - [rxjs](/npm/rxjs)
 
 - [常见问题](/qa)
