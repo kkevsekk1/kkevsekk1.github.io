@@ -13,6 +13,7 @@
     - [文件系统 - Files](/files)
     - [HTTP](/http)
     - [Websocket](/websocket)
+    - [MQTT](/mqtt)
     - [本地存储 - Storages](/storages)
     - [控制台 - Console](/console)
     - [定时器 - Timers](/timers)
