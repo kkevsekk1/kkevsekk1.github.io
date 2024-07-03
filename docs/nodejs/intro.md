@@ -1,6 +1,11 @@
+---
+sidebar_position: 1
+---
+
 # 概述
 
-> <font color="red">注意：V7 版本目前处于开发中，本文档描述的功能模块在 V6 版本不可用</font>
+:::warning 注意：V7 版本目前处于开发中，本文档描述的功能模块在 V6 版本不可用
+:::
 
 ## 启用 nodejs 引擎
 
@@ -8,7 +13,8 @@
 
 ## 从全局变量改为导入模块
 
-在第 2 代 api，所有模块都需要先导入才能使用，如
+在第 2 代 api，所有模块全部需要使用`import `关键字导入，如
+`import { showToast } from 'toast'`,暂不支持`require()`和`import()`动态导入
 
 ```js
 import { showToast } from "toast";
