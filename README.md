@@ -3,7 +3,7 @@
 地址 : http://doc.autoxjs.com/
 
 
-使用 [Docsify](https://github.com/docsifyjs/docsify/) 构建；就是蒋markdown转为静态网站。
+使用 [Docsify](https://github.com/docsifyjs/docsify/) 构建；就是将markdown转为静态网站。
 
 
 ## 本地开发
